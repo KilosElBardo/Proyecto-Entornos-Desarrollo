@@ -1,22 +1,12 @@
 package notas;
 
 public class ExamenClasico {
-
-
-    public static double calcularNotaTest (int aciertos, int fallos, int noContestadas) {
-        double notaFinal = 0, calcularFallos = 0, calcularAciertos = 0;
-        
-        if((aciertos + fallos + noContestadas) == PREGUNTAS_TESTS) {
-            
-            calcularFallos = fallos * FALLO_RESTA;
-            calcularAciertos = aciertos - calcularFallos;
-            notaFinal = aciertos * 10 / 50;
-            
-        }else {
-            return 0;
-        }
-        return notaFinal;
-    }
+	
+	private final int NOTA_MAXIMA = 10;
+	
+	public ExamenClasico () {
+		
+	}
     
     /**
      * 
@@ -24,16 +14,16 @@ public class ExamenClasico {
      * @return notasExamenesClasicosAlumno un array de notas de los exámenes clásicos de un Alumno
      */
     
-    public double[] generarExamenesClasicos (int notaMaxima) {
+    /*public double[] generarExamenesClasicos () {
         
         double[] notasExamenesClasicosAlumno = new double[EXAMENES_CLASICOS];
         
         for (int i = 0; i < notasExamenesClasicosAlumno.length; i++) {
             
-            notasExamenesClasicosAlumno[i] = (double) Math.round(Math.random() * notaMaxima);
+            notasExamenesClasicosAlumno[i] = (double) Math.round(Math.random() * NOTA_MAXIMA);
             
         }
         
         return notasExamenesClasicosAlumno;
-    }
+    }*/
 }

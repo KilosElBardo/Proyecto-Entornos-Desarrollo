@@ -1,26 +1,65 @@
 package notas;
 
 public class ExamenTest {
-private final int PREGUNTAS_TOTALES = 50;
+	private final int PREGUNTAS_TOTALES = 50;
+	private static final double FALLO_RESTA = 1/3f;
+	private final int NOTA_MAXIMA = 10;
     
     private int aciertos = 0;
     private int fallos = 0;
     private int noContestadas = 0;
+    private double nota = 0;
     
-    public void generarPuntuacion() {
-        aciertos = generarAciertosAleatorios();
-        fallos = generarFallosAleatorios(aciertos);
-        noContestadas = PREGUNTAS_TOTALES - (aciertos + fallos) ;
-    }    
-
     
-    public int generarFallosAleatorios(int aciertos) {
-        int fallos = (int) (Math.random()* PREGUNTAS_TOTALES - aciertos);
-        return fallos;
+    public ExamenTest() {
+    	
+    	generarPuntuacion();
+    	calcularNota();
+    }
+    
+  
+    public void generarAciertosAleatorios() {
+        
+    	aciertos = (int) (Math.random()*PREGUNTAS_TOTALES);
+    }
+    
+    public void generarFallosAleatorios() {
+    	
+        fallos = (int) (Math.random()* PREGUNTAS_TOTALES - aciertos);
     }
         
-    public int generarAciertosAleatorios() {
-        int aciertos = (int) (Math.random()*PREGUNTAS_TOTALES);
-        return aciertos;
+    public void generarPreguntasNoContestadas() {
+    	
+    	noContestadas = PREGUNTAS_TOTALES - (aciertos + fallos);
+    }
+    
+    
+    public void generarPuntuacion() {
+    	
+    	generarAciertosAleatorios();
+    	generarFallosAleatorios();
+    	generarPreguntasNoContestadas();
+    }
+
+    
+    public void calcularNota () {
+        double calcularFallos = 0, calcularAciertos = 0;
+        
+        if(aciertos + fallos + noContestadas == PREGUNTAS_TOTALES) {
+            
+        	calcularFallos = fallos * FALLO_RESTA;
+            calcularAciertos = aciertos - calcularFallos;
+            nota = aciertos * NOTA_MAXIMA / PREGUNTAS_TOTALES;
+            
+        }else {
+        	
+            nota = 0;
+            System.out.println("Error, problema con las preguntas totales del examen");
+        }
+
+    }
+    
+    public String toString() {
+    	return String.valueOf(nota);
     }
 }

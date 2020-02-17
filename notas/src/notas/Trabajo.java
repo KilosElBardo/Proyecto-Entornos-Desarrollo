@@ -1,18 +1,31 @@
 package notas;
 
 public class Trabajo {
-	
-
-    static boolean[] trabajosPasados;
     
+	private final int PLAZO_MAXIMO = 6;
+	private boolean isPresentado;
+	private int diasRetraso;
+	
+	
     public Trabajo() {
         
     }
     
-    public static boolean trabajoAprobado (boolean isPresentado, int retraso) {
+    public void generarPresentado () {
+    	
+    	isPresentado = ((int) (Math.random() * 10) > 5)?true:false;
+    	
+    }
+    
+    
+    public void generarDiasRetraso() {
+    	diasRetraso = (int) (Math.random() * PLAZO_MAXIMO);
+    }
+    
+    public boolean trabajoAprobado () {
         
         if(isPresentado) {
-            if(retraso > 5) {
+            if(diasRetraso > 5) {
                 return false;
             }else {
                 return true;
@@ -22,8 +35,8 @@ public class Trabajo {
         return false;
     }
     
-    
-    public static boolean haEntregadoTodosLosTrabajos(boolean[] trabajos) {
+  
+    public boolean haEntregadoTodosLosTrabajos(boolean[] trabajos) {
     	
     	for (boolean b : trabajos) {
             if (b == false) {
