@@ -8,18 +8,23 @@ public class Trabajo {
 	
 	
     public Trabajo() {
-        
+        generarPresentado();
+        generarDiasRetraso();
     }
     
     public void generarPresentado () {
     	
-    	isPresentado = ((int) (Math.random() * 10) > 5)?true:false;
+    	isPresentado = ((int) (Math.random() * 7) < 5)?true:false;
     	
     }
     
     
     public void generarDiasRetraso() {
-    	diasRetraso = (int) (Math.random() * PLAZO_MAXIMO);
+    	
+    	if(isPresentado) {
+    		diasRetraso = (int) (Math.random() * PLAZO_MAXIMO);
+    	}
+    	
     }
     
     public boolean trabajoAprobado () {
@@ -45,5 +50,17 @@ public class Trabajo {
         }
     	return true;
     }
+
+	public boolean isPresentado() {
+		return isPresentado;
+	}
+
+	public int getDiasRetraso() {
+		return diasRetraso;
+	}
+	
+	public String toString() {
+		return "Is presentado " + isPresentado + "\nDias retraso " + diasRetraso;
+	}
 
 }

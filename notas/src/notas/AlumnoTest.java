@@ -38,6 +38,11 @@ class AlumnoTest {
 		for (int i = 0; i < 2; i++) {
 			System.out.println(alumno.getExamenesTests()[i]);
 		}
+		
+		for (int i = 0; i < 3; i++) {
+			System.out.println(alumno.getTrabajos()[i]);
+		}
+		
 	}
 
 }
