@@ -41,10 +41,10 @@ public class Trabajo {
     }
     
   
-    public boolean haEntregadoTodosLosTrabajos(boolean[] trabajos) {
+    static public boolean haEntregadoTodosLosTrabajos(Trabajo[] trabajos) {
     	
-    	for (boolean b : trabajos) {
-            if (b == false) {
+    	for (Trabajo b : trabajos) {
+            if (b.isPresentado() == false) {
                     return false;
             }
         }

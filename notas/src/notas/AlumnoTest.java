@@ -43,6 +43,12 @@ class AlumnoTest {
 			System.out.println(alumno.getTrabajos()[i]);
 		}
 		
+		for (int i = 0; i < 3; i++) {
+			System.out.println(alumno.getExamenesClasicos()[i].getNota());
 	}
-
+		
+		
+		
+	}
 }
+	

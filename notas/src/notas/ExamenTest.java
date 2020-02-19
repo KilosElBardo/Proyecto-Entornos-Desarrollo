@@ -59,6 +59,11 @@ public class ExamenTest {
 
     }
     
+    public double getNota() {
+    
+    	return nota;
+    }
+    
     public String toString() {
     	return String.valueOf(nota);
     }
