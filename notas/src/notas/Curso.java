@@ -8,7 +8,8 @@ public class Curso {
     private final double PORCENTAJE_TERCER_EXAMEN = 20 / 100;
     private final double PORCENTAJE_CUARTO_EXAMEN = 25 / 100;
     private final double PORCENTAJE_QUINTO_EXAMEN = 25 / 100;
-	static final int ALUMNOS_POR_CURSO = 30;
+	static final int ALUMNOS_POR_CURSO = 40;
+	static int alumnosRegistrados = 0;
 	double notaPrimerExamen, notaSegundoExamen, notaTercerExamen, notaCuartoExamen, notaQuintoExamen, notaFinal;   
 	private Alumno [] alumnosCurso  = new Alumno [ALUMNOS_POR_CURSO];
 	

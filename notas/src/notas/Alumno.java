@@ -10,6 +10,10 @@ public class Alumno {
     private double notaFinal = 0;
     private String nombre;
     private String apellidos;
+    private String imagen;
+    private int edad;
+    private int idEstudiante;
+    private boolean isFemenino;
     private ExamenClasico[] ExamenesClasicos = new ExamenClasico[EXAMENES_CLASICOS];
     private ExamenTest[] ExamenesTests = new ExamenTest[EXAMENES_TESTS];
     private Trabajo[] trabajos = new Trabajo[TRABAJOS];
@@ -17,12 +21,17 @@ public class Alumno {
     
     public Alumno () {
     	
+    	
+    	generarSexo();
     	generarNombre();
     	generarApellido();
+    	generarImagen();
+    	generarId();
     	generarExamenesClasicos();
     	generarExamenesTest();
     	generarTrabajos();
     	calcularNotaFinal();
+    	
     	
     }
     
@@ -57,7 +66,7 @@ public class Alumno {
 	    	
     }
     
-    public void generarNombre() {
+    public void generarNombreMasculino() {
     	int num = (int) (Math.random()*13);
 
     	switch(num) {
@@ -65,19 +74,19 @@ public class Alumno {
     			nombre = "Hector";
     			break;
     		case 1: 
-    			nombre = "Alicia";
+    			nombre = "David";
     			break;
     		case 2: 
-    			nombre = "David";
+    			nombre = "Raul";
     			break;
     		case 3: 
     			nombre = "Alejandro";
     			break;
     		case 4: 
-    			nombre = "Raul";
+    			nombre = "Pablo";
     			break;
     		case 5: 
-    			nombre = "Pablo";
+    			nombre = "Alberto";
     			break;
     		case 6: 
     			nombre = "Ivan";
@@ -86,20 +95,133 @@ public class Alumno {
     			nombre = "Jose";
     			break;
     		case 8: 
-    			nombre = "Alejandra";
+    			nombre = "Alexender";
     			break;
     		case 9: 
-    			nombre = "Esther";
+    			nombre = "Moisés";
     			break;
     		case 10: 
-    			nombre = "Andrea";
+    			nombre = "Trajano";
     			break;
     		case 11: 
-    			nombre = "Cristina";
+    			nombre = "Lucas";
     			break;
     		case 12: 
-    			nombre = "Enrique";
+    			nombre = "Antonio";
     			break;
+    	}
+    	
+    }
+    
+    
+    public void generarNombreFemenino() {
+    	int num = (int) (Math.random()*13);
+    	switch(num) {
+    		case 0:
+    			nombre = "Lucia";
+    			break;
+    		case 1:
+    			nombre = "Alicia";
+    			break;
+    		case 2:
+    			nombre = "Maria";
+    			break;
+    		case 3:
+    			nombre = "Aroa";
+    			break;
+    		case 4:
+    			nombre = "Andrea";
+    			break;
+    		case 5:
+    			nombre = "Cristina";
+    			break;
+    		case 6:
+    			nombre = "Alejandra";
+    			break;
+    		case 7:
+    			nombre = "Sara";
+    			break;
+    		case 8:
+    			nombre = "Natalia";
+    			break;
+    		case 9:
+    			nombre = "Isabel";
+    			break;
+    		case 10:
+    			nombre = "Emma";
+    			break;
+    		case 11:
+    			nombre = "Alicia";
+    			break;
+    		case 12:
+    			nombre = "Aurora";
+    			break;
+    	}
+    }
+    
+    private void generarImagen() {
+		 if (isFemenino) {
+			generarImagenFemenina();
+		}else {
+			generarImagenMasculina();
+		}
+	 }
+    
+    public void generarImagenMasculina() {
+    	
+    	int num = (int) (Math.random()*5);
+    	switch(num) {
+    		case 0:
+    			imagen = "/resurces/moreno pelirrojo.png";
+    			break;
+    		case 1:
+    			imagen = "/resurces/negro rubio.png";
+    			break;
+    		case 2:
+    			imagen = "/resurces/balnco rubio.png";
+    			break;
+    		case 3:
+    			imagen = "/resurces/moreno blanco.png";
+    			break;
+    		case 4:
+    			imagen = "/resurces/rosado azul.png";
+    			break;
+    		
+    	}
+    	
+    	
+    }
+    
+    public void generarImagenFemenina() {
+    	int num = (int) (Math.random()*5);
+    	switch(num) {
+    		case 0:
+    			imagen = "/resources/morena blanco.png";
+    			break;
+    		case 1:
+    			imagen = "/resources/clara blanco.png";
+    			break;
+    		case 2:
+    			imagen = "/resources/clara morena.png";
+    			break;
+    		case 3:
+    			imagen = "/resources/clara pelirroja.png";
+    			break;
+    		case 4:
+    			imagen = "/resources/morena rubia.png";
+    			break;
+    	}
+    }
+    
+    public void generarNombre() {
+
+    	if(isFemenino) {
+    		
+    		generarNombreFemenino();
+    	}
+    	else {
+    		
+    		generarNombreMasculino();
     	}
     	
     }
@@ -148,8 +270,55 @@ public class Alumno {
     			apellidos = "Dominguez";
     			break;
     	}
+    	
   
     }
+    
+    
+    private void generarId() {
+    	
+    	Curso.alumnosRegistrados ++;
+    	
+    	idEstudiante = Curso.alumnosRegistrados;
+    	
+    	
+    }
+    
+    
+    
+    private void generarEdad() {
+    	
+    	edad = (int) (Math.random() * 25 + 10);
+    }
+    
+    
+    private void generarSexo() {
+    	
+    	int numeroParaGenerar;
+    	
+    	numeroParaGenerar = (int) (Math.random()*3);
+    	
+    	if(numeroParaGenerar == 1) {
+    		isFemenino = true;
+    	}
+    	else {
+    		isFemenino = false;
+    	}
+    	
+    }
+    
+    
+    private boolean isFemenino() {
+    	
+    	if(isFemenino) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    	
+    }
+    
     
     private void calcularNotaFinal() {
     	
@@ -185,6 +354,26 @@ public class Alumno {
 
 	public Trabajo[] getTrabajos() {
 		return trabajos;
+	}
+
+	public int getIdEstudiante() {
+		return idEstudiante;
+	}
+
+	public static int getPreguntasTests() {
+		return PREGUNTAS_TESTS;
+	}
+
+	public static double getFalloResta() {
+		return FALLO_RESTA;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public String getImagen() {
+		return imagen;
 	}
 
     

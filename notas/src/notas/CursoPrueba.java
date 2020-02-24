@@ -39,6 +39,7 @@ class CursoPrueba {
 			
 			System.out.println("notas examen1 " + cursoPrimero.getAlumnos()[i].getExamenesClasicos()[1].getNota());
 			System.out.println("notas finales " + cursoPrimero.getAlumnos()[i].getNotaFinal());
+			System.out.println("Id del estudiante " + cursoPrimero.getAlumnos()[i].getIdEstudiante());
 		}
 		
     

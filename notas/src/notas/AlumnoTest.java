@@ -35,6 +35,8 @@ class AlumnoTest {
 		System.out.println(alumno.getNombre());
 		System.out.println(alumno.getApellidos());
 		
+		System.out.println("Id del estudiante " + alumno.getIdEstudiante());
+		
 		for (int i = 0; i < 2; i++) {
 			System.out.println(alumno.getExamenesTests()[i]);
 		}
@@ -45,7 +47,11 @@ class AlumnoTest {
 		
 		for (int i = 0; i < 3; i++) {
 			System.out.println(alumno.getExamenesClasicos()[i].getNota());
-	}
+	
+		
+}
+		
+	
 		
 		
 		
