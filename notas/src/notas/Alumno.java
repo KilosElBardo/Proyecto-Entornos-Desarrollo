@@ -58,38 +58,97 @@ public class Alumno {
     }
     
     public void generarNombre() {
-    	int num = (int) (Math.random()*4);
+    	int num = (int) (Math.random()*13);
+
     	switch(num) {
     		case 0: 
-    			nombre = "Joe";
+    			nombre = "Hector";
+    			break;
     		case 1: 
-    			nombre = "Bonnye";
+    			nombre = "Alicia";
+    			break;
     		case 2: 
-    			nombre = "Garfield";
+    			nombre = "David";
+    			break;
     		case 3: 
-    			nombre = "Jerry";	
+    			nombre = "Alejandro";
+    			break;
     		case 4: 
-    			nombre = "Woody";	
+    			nombre = "Raul";
+    			break;
+    		case 5: 
+    			nombre = "Pablo";
+    			break;
+    		case 6: 
+    			nombre = "Ivan";
+    			break;
+    		case 7: 
+    			nombre = "Jose";
+    			break;
+    		case 8: 
+    			nombre = "Alejandra";
+    			break;
+    		case 9: 
+    			nombre = "Esther";
+    			break;
+    		case 10: 
+    			nombre = "Andrea";
+    			break;
+    		case 11: 
+    			nombre = "Cristina";
+    			break;
+    		case 12: 
+    			nombre = "Enrique";
+    			break;
     	}
-    	nombre = "Lily";
+    	
     }
     
     
     public void generarApellido() {
-    	int num = (int) (Math.random()*5);
+    	int num = (int) (Math.random()*13);
     	switch(num) {
     		case 0: 
-    			apellidos = "Smith";
+    			apellidos = "Conesa";
+    			break;
     		case 1: 
-    			apellidos = "Jones";
+    			apellidos = "Quiles";
+    			break;
     		case 2: 
-    			apellidos = "Williams";
+    			apellidos = "Lopez";
+    			break;
     		case 3: 
-    			apellidos = "Brown";	
+    			apellidos = "Nunez";
+    			break;
     		case 4: 
-    			apellidos = "Evans";	
+    			apellidos = "Garcia";
+    			break;
+    		case 5: 
+    			apellidos = "Garci";
+    			break;
+    		case 6: 
+    			apellidos = "Aranz";
+    			break;
+    		case 7: 
+    			apellidos = "Ruiz";
+    			break;
+    		case 8: 
+    			apellidos = "Martinez";
+    			break;
+    		case 9: 
+    			apellidos = "Martin";
+    			break;
+    		case 10: 
+    			apellidos = "Rabano";
+    			break;
+    		case 11: 
+    			apellidos = "Porta";
+    			break;
+    		case 12: 
+    			apellidos = "Dominguez";
+    			break;
     	}
-    	apellidos = "Lidell";
+  
     }
     
     private void calcularNotaFinal() {

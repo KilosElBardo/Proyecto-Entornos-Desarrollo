@@ -6,15 +6,16 @@ import javax.swing.JPanel;
 
 import interfaz.BarraHerramientas;
 import interfaz.GestorPestanyas;
+import notas.Curso;
 
-public class BarraHerramientasPanel extends JPanel {
+public class Paneles extends JPanel {
 	
-	public BarraHerramientasPanel() {
+	public Paneles(Curso curso) {
 		
 		setLayout(new BorderLayout());
 		BarraHerramientas barraHerramientas = new BarraHerramientas("Herramientas");
 		add(barraHerramientas, BorderLayout.NORTH);
-		GestorPestanyas gestorPestanyas = new GestorPestanyas();
+		GestorPestanyas gestorPestanyas = new GestorPestanyas(curso);
 		add(gestorPestanyas, BorderLayout.CENTER);
 	}
 

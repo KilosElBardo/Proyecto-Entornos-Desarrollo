@@ -4,11 +4,13 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import interfaz.paneles.BarraHerramientasPanel;
+import interfaz.paneles.Paneles;
+import notas.Curso;
 
 public class VentanaPrincipal extends JFrame implements Runnable {
 	
 	private Thread hilo;
+	private Curso curso;
 	
 	public VentanaPrincipal() {
 		hilo = new Thread(this);
@@ -21,7 +23,7 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 		setLocationRelativeTo(null);
 		
 	
-		setResizable(false);
+		setResizable(true);
 		setVisible(true);
 	}
 	
@@ -29,17 +31,27 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 		
 	}
 	
-	private void agregarBarraHerramientas() {
-		BarraHerramientasPanel barraHerramientas = new BarraHerramientasPanel();
-		this.getContentPane().add(barraHerramientas);
+	private void agregarPaneles() {
+		
+		Paneles paneles = new Paneles(curso);
+		this.getContentPane().add(paneles);
 	}
 
 	@Override
 	public void run() {
 		
 		establecerIconoVentana();
-		agregarBarraHerramientas();
+		generarCurso();
+		agregarPaneles();
 		propiedadesVentana();
+		
+		
+		
+	}
+	
+	private void generarCurso() {
+		
+		curso = new Curso();
 	}
 	
 }
