@@ -1,12 +1,41 @@
+
 package notas;
 
+/**
+ * <h2> Alumno </h2>
+ * Clase que representará un alumno del curso
+ * 
+ * @author David Quiles
+ * @author Alejandro López
+ * @version 1.0
+ * @see https://github.com/KilosElBardo/Proyecto-Entornos-Desarrollo.git
+*/
+
 public class Alumno {
+	/**
+	 * Constante EXAMENES_CLASICOS 
+	 * 
+	 * Indica la cantidad máxima de examenes de tipo clásico que un alumno hará por curso
+	 * 
+	 */
 	private static final int EXAMENES_CLASICOS = 3;
+	/**
+	 * Constante EXAMENES_TESTS
+	 * 
+	 * Indica la cantidad máxima de examenes de tipo clásico que un alumno hará por curso
+	 * 
+	 */
     private static final int EXAMENES_TESTS = 2;
     private static final int TRABAJOS = 3;
     private static final int PREGUNTAS_TESTS = 50;
     private static final double FALLO_RESTA = 1/3f;
     
+    /**
+	 * Variable nota final
+	 * 
+	 * Indica la nota final que será calculada al instanciar la clase por medio del constructor
+	 * 
+	 */
     private double notaFinal = 0;
     private String nombre;
     private String apellidos;
@@ -21,19 +50,20 @@ public class Alumno {
     
     public Alumno () {
     	
-    	
+      	generarId();
     	generarSexo();
     	generarNombre();
     	generarApellido();
+    	generarEdad();
     	generarImagen();
-    	generarId();
     	generarExamenesClasicos();
     	generarExamenesTest();
     	generarTrabajos();
-    	calcularNotaFinal();
+    	
     	
     	
     }
+    
     
     private void generarExamenesClasicos () {
     	
@@ -66,6 +96,9 @@ public class Alumno {
 	    	
     }
     
+    /**
+     * Genera un nombre masculino
+     */
     public void generarNombreMasculino() {
     	int num = (int) (Math.random()*13);
 
@@ -113,7 +146,9 @@ public class Alumno {
     	
     }
     
-    
+    /**
+     * Genera un nombre femenino
+     */
     public void generarNombreFemenino() {
     	int num = (int) (Math.random()*13);
     	switch(num) {
@@ -307,7 +342,10 @@ public class Alumno {
     	
     }
     
-    
+    /**
+     * 
+     * @return Nos devuelve true si el alumno es una chica y false si es un chico
+     */
     private boolean isFemenino() {
     	
     	if(isFemenino) {
@@ -319,23 +357,21 @@ public class Alumno {
     	
     }
     
-    
-    private void calcularNotaFinal() {
-    	
-    }
+    public void setNotaFinal(double notaFinal) {
+		this.notaFinal = notaFinal;
+	}
 
 	public double getNotaFinal() {
 		return notaFinal;
-	}
-
-	public void setNotaFinal(double notaFinal) {
-		this.notaFinal = notaFinal;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
+	public String getSexo() {
+		return (isFemenino)?"Mujer":"Hombre";
+	}
 
 	public String getApellidos() {
 		return apellidos;

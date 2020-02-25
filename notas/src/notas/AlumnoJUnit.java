@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AlumnoTest {
+class AlumnoJUnit {
 
 	static Alumno alumno;
 	@BeforeAll
@@ -34,26 +34,25 @@ class AlumnoTest {
 	void test() {
 		System.out.println(alumno.getNombre());
 		System.out.println(alumno.getApellidos());
-		
 		System.out.println("Id del estudiante " + alumno.getIdEstudiante());
+		System.out.println("Edad " + alumno.getEdad());
+		System.out.println("Sexo " + alumno.getSexo());
+		System.out.println("Imagen perfil " + alumno.getImagen());
 		
+		System.out.println("Examenes tests");
 		for (int i = 0; i < 2; i++) {
-			System.out.println(alumno.getExamenesTests()[i]);
+			System.out.println("        " + alumno.getExamenesTests()[i]);
 		}
 		
+		System.out.println("Trabajos");
 		for (int i = 0; i < 3; i++) {
-			System.out.println(alumno.getTrabajos()[i]);
+			System.out.println("        " + alumno.getTrabajos()[i]);
 		}
 		
+		System.out.println("Examenes clásicos");
 		for (int i = 0; i < 3; i++) {
-			System.out.println(alumno.getExamenesClasicos()[i].getNota());
-	
-		
-}
-		
-	
-		
-		
+			System.out.println("        " + alumno.getExamenesClasicos()[i].getNota());
+		}
 		
 	}
 }

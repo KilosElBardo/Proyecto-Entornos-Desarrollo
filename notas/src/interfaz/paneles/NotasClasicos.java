@@ -24,16 +24,16 @@ public class NotasClasicos extends JPanel {
 	JTextField jtf = new JTextField(40); 
 	
 	GridBagConstraints gbc = new GridBagConstraints();
-	JPanel datosAlumno = new JPanel();
+	DatosAlumnoIndividual datosAlumnoIndividual = new DatosAlumnoIndividual();
 	
 	
 	
 	public NotasClasicos(String[][] examenesClasicos) {
 		
-		datosAlumno.setBackground(Color.white);
+		datosAlumnoIndividual.setBackground(Color.white);
 		
 		setLayout(new BorderLayout());
-		setBackground(new Color(21, 34, 147));
+		
 
 		
 		/*DefaultTableModel modelo = new DefaultTableModel(null,arrayStrings);*/
@@ -45,19 +45,22 @@ public class NotasClasicos extends JPanel {
 		/*modelo.addRow(arrayStrings);
 		/*tabla.setModel(modelo);
 		modelo.setValueAt(0, 0, 34);*/
-		setBackground(new Color(238,238,238));
+	
 		
 		JScrollPane scrollpane = new JScrollPane(tabla);
 
-		scrollpane.setBackground(Color.white);
+
 		/*gbc.gridx = 0;
 		gbc.gridy = 0;
 		add (jtf,gbc);
 		gbc.gridy = 1;
 		gbc.gridwidth = 2;*/
+		
 		add (jtf, BorderLayout.NORTH);
-		add(datosAlumno, BorderLayout.WEST);
+		add(datosAlumnoIndividual, BorderLayout.CENTER);
 		add (scrollpane, BorderLayout.LINE_END);
+		
+		
 
 		tabla.addMouseListener(new MouseListener() {
 

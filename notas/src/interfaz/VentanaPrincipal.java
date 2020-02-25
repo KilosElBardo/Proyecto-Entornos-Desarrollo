@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -21,8 +22,6 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 		setSize(new Dimension(1000, 1000));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		
-	
 		setResizable(true);
 		setVisible(true);
 	}

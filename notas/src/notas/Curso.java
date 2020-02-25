@@ -1,5 +1,15 @@
 package notas;
 
+/**
+ * <h2>Su función principal será la de almacenar alumnos para poder accederlos de manera sencilla</h2>
+ * <p>Almacenará en un array de <b>Alumnos</b> todos los alumnos pertenecientes al curso</p>
+ * 
+ * @author David Quiles
+ * @author Alejandro López
+ * @version 1.0
+ *
+ */
+
 public class Curso {
 
 	
@@ -8,7 +18,7 @@ public class Curso {
     private final double PORCENTAJE_TERCER_EXAMEN = 20 / 100;
     private final double PORCENTAJE_CUARTO_EXAMEN = 25 / 100;
     private final double PORCENTAJE_QUINTO_EXAMEN = 25 / 100;
-	static final int ALUMNOS_POR_CURSO = 40;
+	public static final int ALUMNOS_POR_CURSO = 120;
 	static int alumnosRegistrados = 0;
 	double notaPrimerExamen, notaSegundoExamen, notaTercerExamen, notaCuartoExamen, notaQuintoExamen, notaFinal;   
 	private Alumno [] alumnosCurso  = new Alumno [ALUMNOS_POR_CURSO];
@@ -19,18 +29,16 @@ public class Curso {
 		calcularNotasFinales();
 		
 	}
-	
+	/**
+	 * 
+	 * @return Devuelve un array con <b>Alumnos</b>
+	 */
 	public Alumno[] getAlumnos(){
-		
-		
 		
 		return alumnosCurso;
 	}
 	
-	
 	public void generarAlumnos() {
-		
-		
 		
 		for(int i = 0; i < Curso.ALUMNOS_POR_CURSO; i++) {
 			
@@ -38,12 +46,12 @@ public class Curso {
 			
 		}
 	}
-	
+	/**
+	 * Calculamos la nota final para cada alumno del curso
+	 */
 	public void calcularNotasFinales() {
 	
 		for(int i = 0; i < ALUMNOS_POR_CURSO; i++) {
-			
-			
 	    	
 	    	if(Trabajo.haEntregadoTodosLosTrabajos(alumnosCurso[i].getTrabajos()) == false) {
 	    		
@@ -58,7 +66,6 @@ public class Curso {
 		    	notaQuintoExamen = alumnosCurso[i].getExamenesTests()[1].getNota() * PORCENTAJE_QUINTO_EXAMEN;
 		    	
 		    	notaFinal = notaPrimerExamen + notaSegundoExamen + notaTercerExamen + notaCuartoExamen + notaQuintoExamen;
-		    	
 		    	alumnosCurso[i].setNotaFinal(Math.round(notaFinal));
 
 	    		

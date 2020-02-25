@@ -25,7 +25,7 @@ public class GestorPestanyas extends JTabbedPane {
 	
 	private String[][] generarExamenesClasicos() {
 		
-		String[][] clasicos = new String[30][5];
+		String[][] clasicos = new String[Curso.ALUMNOS_POR_CURSO][5];
 		for (int i = 0; i < clasicos.length; i++) {
 			clasicos[i][0] = curso.getAlumnos()[i].getNombre();
 			clasicos[i][1] = curso.getAlumnos()[i].getApellidos();
