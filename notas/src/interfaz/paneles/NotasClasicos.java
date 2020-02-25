@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
+import notas.Curso;
+
 public class NotasClasicos extends JPanel {
 
 	String [] coulnes = {"Nombre","Apellidos", "Clasico 1", "Clasico 2", "Clasico 3"};
@@ -70,6 +72,10 @@ public class NotasClasicos extends JPanel {
 				int seleccionado = tabla.getSelectedRow();
 				System.out.println(examenesClasicos[seleccionado][0]);
 				
+				
+				datosAlumnoIndividual.asignarTextoLabel(Curso.obtenerAlumnoPorID(seleccionado + 1));
+				
+				System.out.println(seleccionado);
 			}
 
 			@Override

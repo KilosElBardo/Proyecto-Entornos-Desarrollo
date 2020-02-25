@@ -3,10 +3,10 @@ package notas;
 
 /**
  * <h2> Alumno </h2>
- * Clase que representará un alumno del curso
+ * Clase que representarï¿½ un alumno del curso
  * 
  * @author David Quiles
- * @author Alejandro López
+ * @author Alejandro Lï¿½pez
  * @version 1.0
  * @see https://github.com/KilosElBardo/Proyecto-Entornos-Desarrollo.git
 */
@@ -15,14 +15,14 @@ public class Alumno {
 	/**
 	 * Constante EXAMENES_CLASICOS 
 	 * 
-	 * Indica la cantidad máxima de examenes de tipo clásico que un alumno hará por curso
+	 * Indica la cantidad mï¿½xima de examenes de tipo clï¿½sico que un alumno harï¿½ por curso
 	 * 
 	 */
 	private static final int EXAMENES_CLASICOS = 3;
 	/**
 	 * Constante EXAMENES_TESTS
 	 * 
-	 * Indica la cantidad máxima de examenes de tipo clásico que un alumno hará por curso
+	 * Indica la cantidad mï¿½xima de examenes de tipo clï¿½sico que un alumno harï¿½ por curso
 	 * 
 	 */
     private static final int EXAMENES_TESTS = 2;
@@ -33,7 +33,7 @@ public class Alumno {
     /**
 	 * Variable nota final
 	 * 
-	 * Indica la nota final que será calculada al instanciar la clase por medio del constructor
+	 * Indica la nota final que serï¿½ calculada al instanciar la clase por medio del constructor
 	 * 
 	 */
     private double notaFinal = 0;
@@ -207,19 +207,19 @@ public class Alumno {
     	int num = (int) (Math.random()*5);
     	switch(num) {
     		case 0:
-    			imagen = "/resurces/moreno pelirrojo.png";
+    			imagen = "/resources/moreno pelirrojo.png";
     			break;
     		case 1:
-    			imagen = "/resurces/negro rubio.png";
+    			imagen = "/resources/negro rubio.png";
     			break;
     		case 2:
-    			imagen = "/resurces/balnco rubio.png";
+    			imagen = "/resources/balnco rubio.png";
     			break;
     		case 3:
-    			imagen = "/resurces/moreno blanco.png";
+    			imagen = "/resources/moreno blanco.png";
     			break;
     		case 4:
-    			imagen = "/resurces/rosado azul.png";
+    			imagen = "/resources/rosado azul.png";
     			break;
     		
     	}

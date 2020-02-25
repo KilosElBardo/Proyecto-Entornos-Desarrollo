@@ -1,11 +1,11 @@
 package notas;
 
 /**
- * <h2>Su función principal será la de almacenar alumnos para poder accederlos de manera sencilla</h2>
- * <p>Almacenará en un array de <b>Alumnos</b> todos los alumnos pertenecientes al curso</p>
+ * <h2>Su funciï¿½n principal serï¿½ la de almacenar alumnos para poder accederlos de manera sencilla</h2>
+ * <p>Almacenarï¿½ en un array de <b>Alumnos</b> todos los alumnos pertenecientes al curso</p>
  * 
  * @author David Quiles
- * @author Alejandro López
+ * @author Alejandro Lï¿½pez
  * @version 1.0
  *
  */
@@ -21,7 +21,7 @@ public class Curso {
 	public static final int ALUMNOS_POR_CURSO = 120;
 	static int alumnosRegistrados = 0;
 	double notaPrimerExamen, notaSegundoExamen, notaTercerExamen, notaCuartoExamen, notaQuintoExamen, notaFinal;   
-	private Alumno [] alumnosCurso  = new Alumno [ALUMNOS_POR_CURSO];
+	public static Alumno [] alumnosCurso  = new Alumno [ALUMNOS_POR_CURSO];
 	
 	public Curso() {
 		
@@ -72,7 +72,17 @@ public class Curso {
 	    	}
 	    	
 		}
+		
+		
 	
 	
 }
+	public static Alumno obtenerAlumnoPorID(int id) {
+    	for (Alumno alumno : alumnosCurso) {
+			if(alumno.getIdEstudiante()==id) {
+				return alumno;
+			}
+		}
+    	return null;
+    }
 }
