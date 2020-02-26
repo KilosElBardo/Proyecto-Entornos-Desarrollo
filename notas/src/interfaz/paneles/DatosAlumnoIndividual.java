@@ -16,13 +16,11 @@ import notas.Alumno;
 public class DatosAlumnoIndividual extends JPanel {
 	
 	JLabel imagenPerfil = new JLabel("");
-	JLabel idEstudianteInfo = new JLabel("ID Estudiante: ");
+	JLabel idEstudianteInfo = new JLabel("");
 	JLabel idEstudiante = new JLabel("");
 	JLabel nombreApellidos = new JLabel("");
-	JLabel edadInfo = new JLabel("Edad: ");
 	JLabel edad = new JLabel();
-	JLabel sexoInfo = new JLabel("Sexo: ");
-	JLabel sexo = new JLabel("Sexo: ");
+	JLabel sexo = new JLabel("");
 	GridBagConstraints gbc = new GridBagConstraints();
 	
 	
@@ -31,10 +29,10 @@ public class DatosAlumnoIndividual extends JPanel {
 	
 	public DatosAlumnoIndividual() {
 	
-	nombreApellidos.setFont(new Font("Century Gothic", Font.BOLD, 30) );
-	idEstudiante.setFont(new Font("Century Gothic", Font.BOLD, 30) );
-	edad.setFont(new Font("Century Gothic", Font.BOLD, 30) );
-	sexo.setFont(new Font("Century Gothic", Font.BOLD, 30) );
+	nombreApellidos.setFont(new Font("Times New Roman", Font.BOLD, 40) );
+	idEstudiante.setFont(new Font("Times New Roman", Font.PLAIN, 25) );
+	edad.setFont(new Font("Times New Roman", Font.PLAIN, 25) );
+	sexo.setFont(new Font("Times New Roman", Font.PLAIN, 25) );
 		
     gbc.insets = new Insets(12,12,18,18);
 	setLayout(new GridBagLayout());
@@ -42,35 +40,23 @@ public class DatosAlumnoIndividual extends JPanel {
 	
 	gbc.gridx = 0;
 	gbc.gridy = 0;
-		add(imagenPerfil, gbc);
+	add(imagenPerfil, gbc);
 		
 	gbc.gridx = 0;
 	gbc.gridy = 1;
-		add(nombreApellidos, gbc);
+	add(nombreApellidos, gbc);
 		
 	gbc.gridx = 0;
 	gbc.gridy = 2;
-		add (idEstudianteInfo, gbc);
-		
-	gbc.gridx = 1;
-	gbc.gridy = 2;
-		add(idEstudiante, gbc);
+	add(idEstudiante, gbc);
 		
 	gbc.gridx = 0;
 	gbc.gridy = 3;
-		add(edadInfo, gbc);
-		
-	gbc.gridx = 1;
-	gbc.gridy = 3;
-		add(edad, gbc);
+	add(edad, gbc);
 		
 	gbc.gridx = 0;
 	gbc.gridy = 4;
-		add(sexoInfo, gbc);
-		
-	gbc.gridx = 1;
-	gbc.gridy = 4;
-		add(sexo, gbc);
+	add(sexo, gbc);
 		
 		
 	}
@@ -78,10 +64,10 @@ public class DatosAlumnoIndividual extends JPanel {
 	public void asignarTextoLabel(Alumno alumno) {
 		
 		imagenPerfil.setIcon(new ImageIcon(getClass().getResource(alumno.getImagen())));
+		idEstudiante.setText("Id estudiante: " + String.valueOf(alumno.getIdEstudiante()));
 		nombreApellidos.setText(String.valueOf(alumno.getNombre() + " " + alumno.getApellidos()));
-		edad.setText(String.valueOf(alumno.getEdad()));
-		idEstudiante.setText(String.valueOf(alumno.getIdEstudiante()));
-		sexo.setText(String.valueOf(alumno.getSexo()));
+		edad.setText(String.valueOf("Edad: " + alumno.getEdad()));
+		sexo.setText("Sexo: " + String.valueOf(alumno.getSexo()));
 	
 		
 		
