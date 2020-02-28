@@ -22,10 +22,7 @@ public class DatosAlumnoIndividual extends JPanel {
 	JLabel edad = new JLabel();
 	JLabel sexo = new JLabel("");
 	GridBagConstraints gbc = new GridBagConstraints();
-	
-	
-	
-	
+
 	
 	public DatosAlumnoIndividual() {
 	
@@ -61,15 +58,17 @@ public class DatosAlumnoIndividual extends JPanel {
 		
 	}
 	
-	public void asignarTextoLabel(Alumno alumno) {
+	public void asignarTextoLabels(Alumno alumno) {
 		
 		imagenPerfil.setIcon(new ImageIcon(getClass().getResource(alumno.getImagen())));
 		idEstudiante.setText("Id estudiante: " + String.valueOf(alumno.getIdEstudiante()));
+		
+		//Evitar efecto cambio de tamaño
+		int longitud = alumno.getNombre().length() + alumno.getApellidos().length();
+		System.out.println(longitud);
 		nombreApellidos.setText(String.valueOf(alumno.getNombre() + " " + alumno.getApellidos()));
 		edad.setText(String.valueOf("Edad: " + alumno.getEdad()));
 		sexo.setText("Sexo: " + String.valueOf(alumno.getSexo()));
-	
-		
 		
 	}
 	

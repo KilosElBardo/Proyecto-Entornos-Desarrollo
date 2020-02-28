@@ -3,10 +3,15 @@ package interfaz.paneles;
 import java.awt.Color;
 
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
-public class NotasTests extends JPanel {
+import interfaz.Pestanya;
 
-	public NotasTests() {
-		setBackground(new Color(91, 117, 133));
+public class NotasTests extends Pestanya {
+
+	public NotasTests(String[][] examenesTests, String[] columnas, JTabbedPane gestorPestanyas) {
+			
+		super(examenesTests, columnas, gestorPestanyas);
+	
 	}
 }

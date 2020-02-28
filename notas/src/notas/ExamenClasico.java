@@ -1,9 +1,11 @@
 package notas;
 public class ExamenClasico {
+	
     /**
      * @param Maxima la nota máxima que un Alumno puede tener en un examen clásico (0-10)
      * @param nota 
      */
+	
 	private final int NOTA_MAXIMA = 10;
 	private double nota;
 	
@@ -11,6 +13,9 @@ public class ExamenClasico {
 		generarNotaAleatoria();
 	}
 	
+	public ExamenClasico (double nota) {
+		this.nota = nota;
+	}
 	
 	public double getNota() {
 		return nota;

@@ -12,6 +12,11 @@ public class Trabajo {
         generarDiasRetraso();
     }
     
+    public Trabajo(boolean isPresentado, int diasRetraso) {
+    	this.isPresentado = isPresentado;
+    	this.diasRetraso = diasRetraso;
+    }
+    
     public void generarPresentado () {
     	
     	isPresentado = ((int) (Math.random() * 7) < 5)?true:false;
@@ -57,6 +62,11 @@ public class Trabajo {
 
 	public int getDiasRetraso() {
 		return diasRetraso;
+	}
+	
+	public String getTrabajo() {
+		
+		return (trabajoAprobado())?"Aprobado":"Suspendido";
 	}
 	
 	public String toString() {

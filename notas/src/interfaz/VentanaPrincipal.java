@@ -1,3 +1,8 @@
+
+/*
+ * Colores --> Rojo 196, 72, 29
+ */
+
 package interfaz;
 
 import java.awt.Color;
@@ -19,7 +24,7 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 	}
 	
 	private void propiedadesVentana() {
-		setSize(new Dimension(1000, 1000));
+		setSize(new Dimension(1100, 1000));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(true);

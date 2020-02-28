@@ -60,7 +60,9 @@ public class Alumno {
     	generarExamenesTest();
     	generarTrabajos();
     	
-    	
+    }
+    
+    public Alumno(String nombre, String apellidos, int edad, boolean isFemenino, ExamenTest[] examenTest, ExamenClasico[] examenClasico, Trabajo[] trabajos) {
     	
     }
     
@@ -204,22 +206,28 @@ public class Alumno {
     
     public void generarImagenMasculina() {
     	
-    	int num = (int) (Math.random()*5);
+    	int num = (int) (Math.random()*7);
     	switch(num) {
     		case 0:
-    			imagen = "/resources/moreno pelirrojo.png";
+    			imagen = "/resources/claro_blanco_hombre.png";
     			break;
     		case 1:
-    			imagen = "/resources/negro rubio.png";
+    			imagen = "/resources/claro_moreno_hombre.png";
     			break;
     		case 2:
-    			imagen = "/resources/balnco rubio.png";
+    			imagen = "/resources/claro_pelirrojo_hombre.png";
     			break;
     		case 3:
-    			imagen = "/resources/moreno blanco.png";
+    			imagen = "/resources/claro_rubio_hombre.png";
     			break;
     		case 4:
-    			imagen = "/resources/rosado azul.png";
+    			imagen = "/resources/negro_blanco_hombre.png";
+    			break;
+    		case 5:
+    			imagen = "/resources/negro_pelirrojo_hombre.png";
+    			break;
+    		case 6:
+    			imagen = "/resources/negro_rubio_hombre.png";
     			break;
     		
     	}
@@ -228,23 +236,30 @@ public class Alumno {
     }
     
     public void generarImagenFemenina() {
-    	int num = (int) (Math.random()*5);
+    	int num = (int) (Math.random()*7);
     	switch(num) {
     		case 0:
-    			imagen = "/resources/morena blanco.png";
+    			imagen = "/resources/clara_blanco_mujer.png";
     			break;
     		case 1:
-    			imagen = "/resources/clara blanco.png";
+    			imagen = "/resources/clara_pelirroja_mujer.png";
     			break;
     		case 2:
-    			imagen = "/resources/clara morena.png";
+    			imagen = "/resources/clara_rubia_mujer.png";
     			break;
     		case 3:
-    			imagen = "/resources/clara pelirroja.png";
+    			imagen = "/resources/clara_morena_mujer.png";
     			break;
     		case 4:
-    			imagen = "/resources/morena rubia.png";
+    			imagen = "/resources/negro_blanco_mujer.png";
     			break;
+    		case 5:
+    			imagen = "/resources/negro_pelirrojo_mujer.png";
+    			break;
+    		case 6:
+    			imagen = "/resources/negro_rubio_mujer.png";
+    			break;
+    		
     	}
     }
     

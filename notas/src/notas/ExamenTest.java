@@ -17,6 +17,13 @@ public class ExamenTest {
     	calcularNota();
     }
     
+    public ExamenTest(int aciertos, int fallos, int noContestadas) {
+    	this.aciertos = aciertos;
+    	this.fallos = fallos;
+    	this.noContestadas = noContestadas;
+    	calcularNota();
+    }
+    
   
     public void generarAciertosAleatorios() {
         
@@ -25,7 +32,7 @@ public class ExamenTest {
     
     public void generarFallosAleatorios() {
     	
-        fallos = (int) (Math.random()* PREGUNTAS_TOTALES - aciertos);
+        fallos = (int) (Math.random()* (PREGUNTAS_TOTALES - aciertos));
     }
         
     public void generarPreguntasNoContestadas() {
@@ -49,7 +56,7 @@ public class ExamenTest {
             
         	calcularFallos = fallos * FALLO_RESTA;
             calcularAciertos = aciertos - calcularFallos;
-            nota = aciertos * NOTA_MAXIMA / PREGUNTAS_TOTALES;
+            nota = (double) aciertos * NOTA_MAXIMA / PREGUNTAS_TOTALES;
             
         }else {
         	
@@ -62,6 +69,18 @@ public class ExamenTest {
     public double getNota() {
     
     	return nota;
+    }
+    
+    public int getAciertos() {
+    	return aciertos;
+    }
+    
+    public int getFallos() {
+    	return fallos;
+    }
+    
+    public int getSinContestar() {
+    	return noContestadas;
     }
     
     public String toString() {

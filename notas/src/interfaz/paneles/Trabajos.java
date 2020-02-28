@@ -3,11 +3,16 @@ package interfaz.paneles;
 import java.awt.Color;
 
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
-public class Trabajos extends JPanel {
+import interfaz.Pestanya;
+
+public class Trabajos extends Pestanya {
 
 	
-	public Trabajos() {
-		setBackground(new Color(51, 127, 109));
+	public Trabajos(String[][] trabajos, String[] columnas, JTabbedPane gestorPestanyas) {
+		
+		super(trabajos, columnas, gestorPestanyas);		
+
 	}
 }
