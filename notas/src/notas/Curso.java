@@ -15,17 +15,52 @@ import interfaz.GestorPestanyas;
 public class Curso {
 
 	
-	private final double PORCENTAJE_PRIMER_EXAMEN = 10 / 100f;
-    private final double PORCENTAJE_SEGUNDO_EXAMEN = 20 /100f;
-    private final double PORCENTAJE_TERCER_EXAMEN = 20 / 100f;
-    private final double PORCENTAJE_CUARTO_EXAMEN = 25 / 100f;
-    private final double PORCENTAJE_QUINTO_EXAMEN = 25 / 100f;
+	/**
+	 * PORCENTAJE_PRIMER_EXAMEN_CLASICO sirve para calcular cuánto puntúa el primer examen clasico sobre la nota final
+	 **/
+	private final double PORCENTAJE_PRIMER_EXAMEN_CLASICO = 10 / 100f;
+	/** 
+	 * PORCENTAJE_SEGUNDO_EXAMEN_CLASICO sirve para calcular cuánto puntúa el segundo examen sobre la nota final
+	**/
+    private final double PORCENTAJE_SEGUNDO_EXAMEN_CLASICO = 20 /100f;
+    /** 
+     * PORCENTAJE_TERCER_EXAMEN_CLASICO sirve para calcular cuánto puntúa el tercer examen sobre la nota final
+     **/
+    private final double PORCENTAJE_TERCER_EXAMEN_CLASICO = 20 / 100f;
+    
+    /** 
+     * PORCENTAJE_PRIMER_EXAMEN_TEST sirve para calcular cuánto puntúa el primer examen tipo sobre la nota final
+     **/
+    private final double PORCENTAJE_PRIMER_EXAMEN_TEST = 25 / 100f;
+    
+    /** 
+     * PORCENTAJE_SEGUNDO_EXAMEN_TEST sirve para calcular cuánto puntúa el segundo examen tipo sobre la nota final
+     **/
+    private final double PORCENTAJE_SEGUNDO_EXAMEN_TEST = 25 / 100f;
+    
+    /**
+     * ALUMNOS_CREADOS_AUTOMATICAMENTE_POR_CURSO sirve para crear los alumnos por cada curso
+     **/
 	public static final int ALUMNOS_CREADOS_AUTOMATICAMENTE_POR_CURSO = 120;
+	
+	/**
+	 * ALUMNOS_MAXIMOS_POR_CURSO pone un máximo de alumnos que es posible crear por curso
+	 **/
 	public static final int ALUMNOS_MAXIMOS_POR_CURSO = 140;
+	
+	/**
+	 * alumnosRegistrados indica cuántos alumnnos hay registrados manualmente en el programa en este momento
+	 **/
 	public static int alumnosRegistrados = 0;
-	double notaPrimerExamen, notaSegundoExamen, notaTercerExamen, notaCuartoExamen, notaQuintoExamen, notaFinal;   
+	
+	/**
+	 * alumnosCurso crea un array de alumnos con sus variables de instancia en un curso
+	 **/
 	public static Alumno [] alumnosCurso  = new Alumno [ALUMNOS_MAXIMOS_POR_CURSO];
 	
+	/**
+	 * El constuctor de Curso. Cuando es llamado usa los métodos de generar alumnos y calcular sus notas finales
+	 */
 	public Curso() {
 		
 		generarAlumnos();
@@ -41,12 +76,20 @@ public class Curso {
 		return alumnosCurso;
 	}
 	
+	/**
+	 * Agrega un alumno manualmente al array alumnosCurso
+	 * @param alumno recibe un objeto de tipo Alumno
+	 * 
+	 */
 	public void agregarAlumnoACurso (Alumno alumno) {
 		
 		alumnosCurso[alumnosRegistrados-1] = alumno;
 		
 	}
 	
+	/**
+	 * Genera los alumnos dentro del curso
+	 */
 	public void generarAlumnos() {
 		
 		for(int i = 0; i <= ALUMNOS_CREADOS_AUTOMATICAMENTE_POR_CURSO; i++) {
@@ -59,18 +102,20 @@ public class Curso {
 	}
 	
 	/**
-	 * Calculamos la nota final para cada alumno del curso
+	 * Calcula la nota final para cada alumno del curso
 	 */
 	public void calcularNotasFinales() {
 	
+		double notaPrimerExamen, notaSegundoExamen, notaTercerExamen, notaCuartoExamen, notaQuintoExamen, notaFinal;   
+		
 		for(int i = 0; i < alumnosRegistrados; i++) {
 	    	
 	    	if(Trabajo.haEntregadoTodosLosTrabajos(alumnosCurso[i].getTrabajos())) {
-	    		notaPrimerExamen = alumnosCurso[i].getExamenesClasicos()[0].getNota() * PORCENTAJE_PRIMER_EXAMEN;
-		    	notaSegundoExamen = alumnosCurso[i].getExamenesClasicos()[1].getNota() * PORCENTAJE_SEGUNDO_EXAMEN;
-		    	notaTercerExamen = alumnosCurso[i].getExamenesClasicos()[2].getNota() * PORCENTAJE_TERCER_EXAMEN;
-		    	notaCuartoExamen = alumnosCurso[i].getExamenesTests()[0].getNota() * PORCENTAJE_CUARTO_EXAMEN;
-		    	notaQuintoExamen = alumnosCurso[i].getExamenesTests()[1].getNota() * PORCENTAJE_QUINTO_EXAMEN;
+	    		notaPrimerExamen = alumnosCurso[i].getExamenesClasicos()[0].getNota() * PORCENTAJE_PRIMER_EXAMEN_CLASICO;
+		    	notaSegundoExamen = alumnosCurso[i].getExamenesClasicos()[1].getNota() * PORCENTAJE_SEGUNDO_EXAMEN_CLASICO;
+		    	notaTercerExamen = alumnosCurso[i].getExamenesClasicos()[2].getNota() * PORCENTAJE_TERCER_EXAMEN_CLASICO;
+		    	notaCuartoExamen = alumnosCurso[i].getExamenesTests()[0].getNota() * PORCENTAJE_PRIMER_EXAMEN_TEST;
+		    	notaQuintoExamen = alumnosCurso[i].getExamenesTests()[1].getNota() * PORCENTAJE_SEGUNDO_EXAMEN_TEST;
 		    	
 		    	notaFinal = Math.round(notaPrimerExamen + notaSegundoExamen + notaTercerExamen + notaCuartoExamen + notaQuintoExamen);
 		    	alumnosCurso[i].setNotaFinal(notaFinal);
@@ -84,7 +129,11 @@ public class Curso {
 		}
 	
 	}
-	
+	/**
+	 * Obtiene la media de los tres exámenes clásicos de un alumno
+	 * @param posicionAlumno la posicion del alumno del que queremos obtener la media de los tres exámenes clásicos
+	 * @return la nota media de los exámenes clásicos del alumno
+	 */
 	public double getMediaAlumnoExamenesClasicos(int posicionAlumno) {
 		
 		double primerExamen = alumnosCurso[posicionAlumno].getExamenesClasicos()[0].getNota();
@@ -96,6 +145,11 @@ public class Curso {
 		
 	}
 	
+	/**
+	 * Obtiene la media de los tres exámenes tipo test de un alumno
+	 * @param posicionAlumno la posicion del alumno del que queremos obtener la media de los dos exámenes de tipo test
+	 * @return la nota media de los exámenes tipo test del alumno
+	 */
 	public double getMediaAlumnoExamenesTests(int posicionAlumno) {
 		
 		double primerExamen = alumnosCurso[posicionAlumno].getExamenesTests()[0].getNota();
@@ -106,6 +160,10 @@ public class Curso {
 		
 	}
 	
+	/**
+	 * Genera la información que se mostrará en la tabla cuando se visualice todos los alumnos del curso
+	 * @return devuelve la nota de cada uno de los exámenes clásicos de los alumnos del curso
+	 */
 	public String[][] generarInformacionExamenesClasicos() {
 		
 		String[][] clasicos = new String[Curso.alumnosRegistrados][5];
@@ -121,6 +179,11 @@ public class Curso {
 		
 	}
 
+	/**
+	 * Genera la información que se mostrará en la tabla cuando se visualice un alumno en especial
+	 * @param posicionAlumno genera la nota de cada uno de los exámenes clásicos de un alumno específico
+	 * @return devuelve la nota de cada uno de los exámenes clásicos de un alumno específico
+	 */
 	public String[] generarInformacionExamenesClasicos(int posicionAlumno) {
 	
 		String[] clasicos = new String[5];
@@ -135,7 +198,10 @@ public class Curso {
 		
 }
 
-
+/**
+ * Asigna los nombres de las columnas para la interfaz gráfica para los exámenes clásicos
+ * @return devuelve las columnas de la interfaz con los nombres ya atribuidos
+ */
 	public String[] getColumnasExamenesClasicos() {
 		
 		String[] columnas = {"Nombre", "Apellidos", "Examen 1", "Examen 2", "Examen 3"};
@@ -143,6 +209,10 @@ public class Curso {
 		return columnas;
 	}
 	
+	/**
+	 * Genera la información que se mostrará en la tabla cuando se visualice todos los alumnos del curso
+	 * @return devuelve los datos que la interfaz debe mostrar
+	 */
 	public String[][] generarInformacionExamenesTests() {
 		
 		String[][] clasicos = new String[Curso.alumnosRegistrados][10];
@@ -162,7 +232,11 @@ public class Curso {
 		return clasicos;
 		
 	}
-	
+	/**
+	 *Genera la información que se mostrará en la tabla cuando se visualice un alumno específico
+	 * @param posicionAlumno la posición del alumno del que se quiere obtener la nota de cada uno de los exámenes de tipo test
+	 * @return devuelve los datos que la interfaz debe mostrar
+	 */
 	public String[] generarInformacionExamenesTests(int posicionAlumno) {
 		
 		String[] tests = new String[10];
@@ -181,7 +255,11 @@ public class Curso {
 		return tests;
 		
 	}
-
+	
+	/**
+	 * Asigna los nombres de las columnas sobre los exámenes tipo test para la interfaz gráfica 
+	 * @return devuelve los datos que la interfaz debe mostrar
+	 */
 	public String[] getColumnasExamenesTests() {
 		
 		String[] columnas = {"Nombre", "Apellidos", "A", "F", "SN" ,"Nota", "A", "F", "SN", "Nota"};
@@ -189,6 +267,10 @@ public class Curso {
 		return columnas;
 	}
 	
+	/**
+	 * Genera la información que se mostrará en la tabla cuando se visualice todos los alumnos del curso
+	 * @return devuelve los datos que la interfaz debe mostrar
+	 */
 	public String[][] generarInformacionTrabajos() {
 		
 		String[][] trabajos = new String[Curso.alumnosRegistrados][10];
@@ -204,6 +286,11 @@ public class Curso {
 		
 	}
 	
+	/**
+	 * Genera la información que se mostrará en la tabla cuando se visualice un alumno específico
+	 * @param posicionAlumno
+	 * @return devuelve los datos que la interfaz debe mostrar
+	 */
 	public String[] generarInformacionTrabajos(int posicionAlumno) {
 		
 		String[] trabajos = new String[10];
@@ -218,6 +305,10 @@ public class Curso {
 		
 	}
 
+	/**
+	 * Asigna los nombres de las columnas sobre los trabajos para la interfaz gráfica 
+	 * @return devuelve las columnas de la interfaz con los nombres ya atribuidos
+	 */
 	public String[] getColumnasTrabajos() {
 		
 		String[] columnas = {"Nombre", "Apellidos", "Trabajo 1", "Trabajo 2", "Trabajo 3"};
@@ -225,6 +316,10 @@ public class Curso {
 		return columnas;
 	}
 	
+	/**
+	 * Genera la información que se mostrará en la tabla cuando se visualice todos los alumnos del curso
+	 * @return devuelve los datos que la interfaz debe mostrar
+	 */
 	public String[][] generarInformacionFinales() {
 		
 		String[][] finales = new String[Curso.alumnosRegistrados][6];
@@ -240,7 +335,12 @@ public class Curso {
 		return finales;
 		
 	}
-	
+
+	/**
+	 * Genera la información que se mostrará en la tabla cuando se visualice todos los alumnos del curso
+	 * @param posicionAlumno recibe la posición de un alumno
+	 * @return devuelve los datos que la interfaz debe mostrar
+	 */
 	public String[] generarInformacionFinales(int posicionAlumno) {
 		
 		String[] finales = new String[6];
@@ -255,7 +355,11 @@ public class Curso {
 		return finales;
 		
 	}
-
+	
+	/**
+	 * Asigna los nombres de las columnas sobre los trabajos para la interfaz gráfica
+	 * @return devuelve las columnas de la interfaz con los nombres ya atribuidos
+	 */
 	public String[] getColumnasFinales() {
 		
 		String[] columnas = {"Nombre", "Apellidos", "AVG Clasicos", "AVG Tests","Trabajos", "Final"};
@@ -263,7 +367,11 @@ public class Curso {
 		return columnas;
 	}
 	
-	
+	/**
+	 * sirve para buscar un alumno en especial mediante su id
+	 * @param id el id del alumno que se quiere buscar
+	 * @return el alumno al cual pertenece el id recibido
+	 */
 	public static Alumno obtenerAlumnoPorID(int id) {
     	for (Alumno alumno : alumnosCurso) {
 			if(alumno.getIdEstudiante()==id) {
