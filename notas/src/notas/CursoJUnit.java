@@ -35,7 +35,7 @@ class CursoJUnit {
 	
 		
 		
-		for(int i = 0; i < Curso.ALUMNOS_POR_CURSO; i++) {
+		for(int i = 0; i < Curso.ALUMNOS_CREADOS_AUTOMATICAMENTE_POR_CURSO; i++) {
 			
 			System.out.println("notas examen1 " + cursoPrimero.getAlumnos()[i].getExamenesClasicos()[1].getNota());
 			System.out.println("notas finales " + cursoPrimero.getAlumnos()[i].getNotaFinal());

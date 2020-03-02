@@ -16,6 +16,9 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
@@ -29,16 +32,31 @@ public class Pestanya extends JPanel {
 	
 	protected JTable tabla;
 	protected DatosAlumnoIndividual datosAlumnoIndividual;
-	protected JScrollPane scrollTabla;
+	public static JScrollPane scrollTabla;
 	protected String[][] datosTabla;
 	protected String[] columnasTabla;
+	protected DefaultTableModel model;
+	protected GestorPestanyas gestorPestanyas;
 	
-	public Pestanya(String[][] datosTabla, String[] columnasTabla, JTabbedPane gestorPestanyas) {
-		
+	public Pestanya(String[][] datosTabla, String[] columnasTabla, GestorPestanyas gestorPestanyas) {
+
 		setLayout(new BorderLayout());
 		
 		this.datosTabla = datosTabla;
 		this.columnasTabla = columnasTabla;
+		this.gestorPestanyas = gestorPestanyas;
+		
+		actualizarTabla();
+
+	
+	}
+	
+	protected void mostrarInformacionUsuarioSeleccionado() {
+		datosAlumnoIndividual.asignarTextoLabels(Curso.obtenerAlumnoPorID(idUsuarioSeleccionado));
+		tabla.changeSelection(idUsuarioSeleccionado-1, 0, false, false);
+	}
+	
+	public void actualizarTabla() {
 		
 		agregarTabla();
 		ajustarColumnaTablaAlContenido(tabla);
@@ -57,19 +75,35 @@ public class Pestanya extends JPanel {
 			}
 			
 		});
-	
-	}
-	
-	protected void mostrarInformacionUsuarioSeleccionado() {
-		datosAlumnoIndividual.asignarTextoLabels(Curso.obtenerAlumnoPorID(idUsuarioSeleccionado));
-		tabla.changeSelection(idUsuarioSeleccionado-1, 0, false, false);
 	}
 	
 	protected void agregarTabla() {
-		tabla = new JTable(datosTabla, columnasTabla);
+		
+		model = new DefaultTableModel();
+		tabla = new JTable(model);
+	
+		for (int i = 0; i < columnasTabla.length; i++) {
+			model.addColumn(columnasTabla[i]);
+		}
+		for (int i = 0; i < datosTabla.length; i++) {
+			model.addRow(datosTabla[i]);
+		}
 		scrollTabla = new JScrollPane(tabla);
+		model.addTableModelListener(new TableModelListener() {
+			
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				// TODO Auto-generated method stub
+				tabla.updateUI();
+				
+
+			}
+		});
 		add(scrollTabla, BorderLayout.EAST);
+	
 	}
+	
+	
 	
 	protected void agregarMouseListenerTabla() {
 		tabla.addMouseListener(new MouseListener() {
@@ -125,7 +159,7 @@ public class Pestanya extends JPanel {
 		
 	    final TableColumnModel modeloColumna = table.getColumnModel();
 	    for (int columna = 0; columna < table.getColumnCount(); columna++) {
-	        int ancho = 15; // Min width
+	        int ancho = 15;
 	        for (int fila = 0; fila < table.getRowCount(); fila++) {
 	            TableCellRenderer renderizar = table.getCellRenderer(fila, columna);
 	            Component comp = table.prepareRenderer(renderizar, fila, columna);

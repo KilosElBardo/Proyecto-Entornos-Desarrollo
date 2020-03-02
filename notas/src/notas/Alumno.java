@@ -18,15 +18,15 @@ public class Alumno {
 	 * Indica la cantidad m�xima de examenes de tipo cl�sico que un alumno har� por curso
 	 * 
 	 */
-	private static final int EXAMENES_CLASICOS = 3;
+	public static final int EXAMENES_CLASICOS = 3;
 	/**
 	 * Constante EXAMENES_TESTS
 	 * 
 	 * Indica la cantidad m�xima de examenes de tipo cl�sico que un alumno har� por curso
 	 * 
 	 */
-    private static final int EXAMENES_TESTS = 2;
-    private static final int TRABAJOS = 3;
+    public static final int EXAMENES_TESTS = 2;
+    public static final int TRABAJOS = 3;
     private static final int PREGUNTAS_TESTS = 50;
     private static final double FALLO_RESTA = 1/3f;
     
@@ -43,8 +43,8 @@ public class Alumno {
     private int edad;
     private int idEstudiante;
     private boolean isFemenino;
-    private ExamenClasico[] ExamenesClasicos = new ExamenClasico[EXAMENES_CLASICOS];
-    private ExamenTest[] ExamenesTests = new ExamenTest[EXAMENES_TESTS];
+    private ExamenClasico[] examenesClasicos = new ExamenClasico[EXAMENES_CLASICOS];
+    private ExamenTest[] examenesTests = new ExamenTest[EXAMENES_TESTS];
     private Trabajo[] trabajos = new Trabajo[TRABAJOS];
     
     
@@ -62,7 +62,18 @@ public class Alumno {
     	
     }
     
-    public Alumno(String nombre, String apellidos, int edad, boolean isFemenino, ExamenTest[] examenTest, ExamenClasico[] examenClasico, Trabajo[] trabajos) {
+    public Alumno(String nombre, String apellidos, int edad, boolean isFemenino, ExamenTest[] examenesTest, ExamenClasico[] examenesClasicos,  Trabajo[] trabajos) {
+    	
+    	generarId();
+    	this.nombre = nombre;
+    	this.apellidos = apellidos;
+    	this.edad = edad;
+    	this.isFemenino = isFemenino;
+    	this.examenesTests = examenesTest;
+    	this.examenesClasicos = examenesClasicos;
+    	this.trabajos = trabajos;
+    	generarImagen();
+    	
     	
     }
     
@@ -71,7 +82,7 @@ public class Alumno {
     	
     	for (int i = 0; i < EXAMENES_CLASICOS; i++) {
     		
-    		ExamenesClasicos[i] = new ExamenClasico();
+    		examenesClasicos[i] = new ExamenClasico();
 			
 		}
     	
@@ -81,7 +92,7 @@ public class Alumno {
     	
     	for (int i = 0; i < EXAMENES_TESTS; i++) {
     		
-    		ExamenesTests[i] = new ExamenTest();
+    		examenesTests[i] = new ExamenTest();
 			
 		}
     	
@@ -327,7 +338,7 @@ public class Alumno {
     
     private void generarId() {
     	
-    	Curso.alumnosRegistrados ++;
+    	Curso.alumnosRegistrados++;
     	
     	idEstudiante = Curso.alumnosRegistrados;
     	
@@ -393,13 +404,13 @@ public class Alumno {
 	}
 
 	public ExamenClasico[] getExamenesClasicos() {
-		return ExamenesClasicos;
+		return examenesClasicos;
 	}
 
 
 
 	public ExamenTest[] getExamenesTests() {
-		return ExamenesTests;
+		return examenesTests;
 	}
 
 

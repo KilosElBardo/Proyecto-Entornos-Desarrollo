@@ -45,7 +45,6 @@ public class Trabajo {
         return false;
     }
     
-  
     static public boolean haEntregadoTodosLosTrabajos(Trabajo[] trabajos) {
     	
     	for (Trabajo b : trabajos) {

@@ -19,10 +19,11 @@ public class BarraHerramientas extends JToolBar {
 	private JButton agregarUsuarioBoton;
 	private JButton eliminarUsuarioBoton;
 	private JButton guardarUsuariosEnFicheroBoton;
+	private Curso curso;
 	
-	public BarraHerramientas(String message) {
+	public BarraHerramientas(String message, Curso curso) {
 		
-		super(message);
+		this.curso = curso;
 		agregarBotones();
 		
 		
@@ -46,7 +47,7 @@ public class BarraHerramientas extends JToolBar {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				AgregarAlumno agregarAlumno = new AgregarAlumno();
+				NuevoAlumno agregarAlumno = new NuevoAlumno(curso);
 				
 			}
 			
@@ -101,7 +102,7 @@ public class BarraHerramientas extends JToolBar {
 		
 		try {
 			PrintWriter printWriter = new PrintWriter(new FileOutputStream(ruta + ".txt"));
-			for (int i = 0; i < Curso.ALUMNOS_POR_CURSO; i++) {
+			for (int i = 0; i < Curso.ALUMNOS_CREADOS_AUTOMATICAMENTE_POR_CURSO; i++) {
 				
 				printWriter.print("ID " + alumnos[i].getIdEstudiante() + ", ");
 				printWriter.print("Nombre " + alumnos[i].getNombre() + ", ");

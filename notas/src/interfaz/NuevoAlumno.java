@@ -27,11 +27,17 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
+import interfaz.paneles.NotasClasicos;
+import interfaz.paneles.NotasFinales;
+import interfaz.paneles.NotasTests;
+import interfaz.paneles.Trabajos;
+import notas.Alumno;
+import notas.Curso;
 import notas.ExamenClasico;
 import notas.ExamenTest;
 import notas.Trabajo;
 
-public class AgregarAlumno extends JFrame {
+public class NuevoAlumno extends JFrame {
 	
 	JPanel examenesClasicosPanel = new JPanel();
 	JPanel examenesTestsPanel = new JPanel();
@@ -62,11 +68,11 @@ public class AgregarAlumno extends JFrame {
 	JSpinner noContestadasTest2 = new JSpinner();
 	JSpinner edad = new JSpinner();
 	
+	JSpinner[] diasRetraso = new JSpinner[3];
+	
 	JCheckBox trabajosCheckBox1 = new JCheckBox("Entregado");
 	JCheckBox trabajosCheckBox2 = new JCheckBox("Entregado");
 	JCheckBox trabajosCheckBox3 = new JCheckBox("Entregado");
-	
-	JSpinner[] diasRetraso = new JSpinner[3];
 	
 	GridBagConstraints principal = new GridBagConstraints();
 	GridBagConstraints gridBagClasicos = new GridBagConstraints();
@@ -81,16 +87,29 @@ public class AgregarAlumno extends JFrame {
 	
 	JComboBox sexoComboBox = new JComboBox();
 	
-	JButton ingresarUsuarioBoton = new JButton("Ingresar");
+	JButton ingresarNuevoAlumnoBoton = new JButton("Ingresar");
+	private Curso curso;
 	
-	public AgregarAlumno() {
+	public NuevoAlumno(Curso curso) {
 		
+		this.curso = curso;
 		setLayout(new GridLayout(2,2));
 		agregarInterfazDatosPersonales();
 		agregarInterfazExamenesClasicos();
 		agregarInterfazTrabajos();
 		agregarInterfazExamenesTests();
 		propiedadesVentana();
+		
+		ingresarNuevoAlumnoBoton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				agregarAlumno();
+				
+			}
+			
+		});
 	}
 	
 	private void agregarInterfazDatosPersonales() {
@@ -106,10 +125,15 @@ public class AgregarAlumno extends JFrame {
 		agregarElementoAlPanel(new JLabel("Apellidos"), datosPersonalesPanel, gridDatosPersonales, new Point(0,2));
 		agregarElementoAlPanel(apellidosTextField, datosPersonalesPanel, gridDatosPersonales, new Point(1,2));
 		
+		agregarElementoAlPanel(new JLabel("Edad"), datosPersonalesPanel, gridDatosPersonales, new Point(0,3));
+		agregarElementoAlPanel(edad, datosPersonalesPanel, gridDatosPersonales, new Point(1,3));
+		
 		sexoComboBox.addItem("Hombre");
 		sexoComboBox.addItem("Mujer");
-		agregarElementoAlPanel(new JLabel("Sexo"), datosPersonalesPanel, gridDatosPersonales, new Point(0,3));
-		agregarElementoAlPanel(sexoComboBox, datosPersonalesPanel, gridDatosPersonales, new Point(1,3));
+		agregarElementoAlPanel(new JLabel("Sexo"), datosPersonalesPanel, gridDatosPersonales, new Point(0,4));
+		agregarElementoAlPanel(sexoComboBox, datosPersonalesPanel, gridDatosPersonales, new Point(1,4));
+		
+		agregarElementoAlPanel(ingresarNuevoAlumnoBoton, datosPersonalesPanel, gridDatosPersonales, new Point(0,5));
 		
 		add(datosPersonalesPanel, BorderLayout.CENTER);
 	}
@@ -146,25 +170,45 @@ public class AgregarAlumno extends JFrame {
 		agregarElementoAlPanel(fallosTest2, examenesTestsPanel, gridBagTests, new Point(1,7));
 		agregarElementoAlPanel(new JLabel("Sin contestar"), examenesTestsPanel, gridBagTests, new Point(0,8));
 		agregarElementoAlPanel(noContestadasTest2, examenesTestsPanel, gridBagTests, new Point(1,8));
+		agregarElementoAlPanel(new JLabel("Recuerda la suma de aciertos más fallos más sin contestar debe ser " + 50), examenesTestsPanel, gridBagTests, new Point(0,9));
 		
 		add(examenesTestsPanel, BorderLayout.CENTER);
 	}
 	
-	private void recogerTodosLosDatos() {
+	/**
+	 * Agregará un alumno al curso y nos lo incluirá en las tablas
+	 */
+	private void agregarAlumno() {
 		
+		boolean isFemenino = (sexoComboBox.getSelectedItem().toString().equals("Mujer"))?true:false;
+		Alumno newAlumno = new Alumno(nombreTextField.getText(), apellidosTextField.getText(), (int) edad.getValue(), isFemenino, recogerExamenesTest(), recogerExamenesClasicos(), recogerTrabajos());
+		curso.agregarAlumnoACurso(newAlumno);
+		agregarAlumnoATabla();
+
+	}
+	
+	/**
+	 * Agregará el alumno nuevo creado a la tabla de notas clasicas, tests y trabajos.
+	 */
+	private void agregarAlumnoATabla() {
+		String[] informacionClasicos = curso.generarInformacionExamenesClasicos(Curso.alumnosRegistrados-1);
+		String[] informacionTests = curso.generarInformacionExamenesTests(Curso.alumnosRegistrados-1);
+		String[] informacionTrabajos = curso.generarInformacionTrabajos(Curso.alumnosRegistrados-1);
+		String[] informacionFinales = curso.generarInformacionFinales(Curso.alumnosRegistrados-1);
 		
-		recogerExamenesClasicos();
-		recogerExamenesTest();
-		recogerTrabajos();
-		
+		NotasClasicos.agregarFilaClasica(informacionClasicos);
+		NotasTests.agregarFilaTest(informacionTests);
+		Trabajos.agregarFilaTrabajo(informacionTrabajos);
+		NotasFinales.agregarFilaFinales(informacionFinales);
 	}
 	
 	private ExamenClasico[] recogerExamenesClasicos() {
 		
 		ExamenClasico[] examenesClasicos = new ExamenClasico[3]; 
-		examenesClasicos[0] = new ExamenClasico((double) notaClasica1.getValue());
-		examenesClasicos[1] = new ExamenClasico((double) notaClasica2.getValue());
-		examenesClasicos[2] = new ExamenClasico((double) notaClasica3.getValue());
+
+		examenesClasicos[0] = new ExamenClasico((int) notaClasica1.getValue());
+		examenesClasicos[1] = new ExamenClasico((int) notaClasica2.getValue());
+		examenesClasicos[2] = new ExamenClasico((int) notaClasica3.getValue());
 		return examenesClasicos;
 		
 	}
@@ -182,8 +226,8 @@ public class AgregarAlumno extends JFrame {
 		
 		Trabajo[] trabajos = new Trabajo[3];
 		trabajos[0] = new Trabajo(trabajosCheckBox1.isSelected(), (int) diasRetrasoSpinner1.getValue());
-		trabajos[2] = new Trabajo(trabajosCheckBox2.isSelected(), (int) diasRetrasoSpinner2.getValue());
-		trabajos[3] = new Trabajo(trabajosCheckBox3.isSelected(), (int) diasRetrasoSpinner3.getValue());
+		trabajos[1] = new Trabajo(trabajosCheckBox2.isSelected(), (int) diasRetrasoSpinner2.getValue());
+		trabajos[2] = new Trabajo(trabajosCheckBox3.isSelected(), (int) diasRetrasoSpinner3.getValue());
 		return trabajos;
 		
 	}
@@ -201,11 +245,11 @@ public class AgregarAlumno extends JFrame {
 		
 		examenesClasicosTitulo.setFont(new Font(defaultFont, Font.BOLD, 20));
 		agregarElementoAlPanel(examenesClasicosTitulo, examenesClasicosPanel, gridBagClasicos, new Point(0,0));
-		agregarElementoAlPanel(primerTrabajoLabel, examenesClasicosPanel, gridBagClasicos, new Point(0,1));
+		agregarElementoAlPanel(new JLabel("Examen 1"), examenesClasicosPanel, gridBagClasicos, new Point(0,1));
 		agregarElementoAlPanel(notaClasica1, examenesClasicosPanel, gridBagClasicos, new Point(1,1));
-		agregarElementoAlPanel(segundoTrabajoLabel, examenesClasicosPanel, gridBagClasicos, new Point(0,2));
+		agregarElementoAlPanel(new JLabel("Examen 2"), examenesClasicosPanel, gridBagClasicos, new Point(0,2));
 		agregarElementoAlPanel(notaClasica2, examenesClasicosPanel, gridBagClasicos, new Point(1,2));
-		agregarElementoAlPanel(tercerTrabajoLabel, examenesClasicosPanel, gridBagClasicos, new Point(0,3));
+		agregarElementoAlPanel(new JLabel("Examen 3"), examenesClasicosPanel, gridBagClasicos, new Point(0,3));
 		agregarElementoAlPanel(notaClasica3, examenesClasicosPanel, gridBagClasicos, new Point(1,3));
 		
 		add(examenesClasicosPanel, BorderLayout.EAST);
@@ -270,12 +314,10 @@ public class AgregarAlumno extends JFrame {
 	}
 	
 	private void propiedadesVentana() {
-		setSize(new Dimension(900, 900));
+		setSize(new Dimension(1100, 900));
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setVisible(true);
 	}
 	
-	
-
 }

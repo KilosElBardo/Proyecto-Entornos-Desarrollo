@@ -1,7 +1,7 @@
 package notas;
 
 public class ExamenTest {
-	private final int PREGUNTAS_TOTALES = 50;
+	public final int PREGUNTAS_TOTALES = 50;
 	private static final double FALLO_RESTA = 1/3f;
 	private final int NOTA_MAXIMA = 10;
     

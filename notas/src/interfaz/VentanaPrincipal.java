@@ -17,6 +17,7 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 	
 	private Thread hilo;
 	private Curso curso;
+	private Paneles paneles;
 	
 	public VentanaPrincipal() {
 		hilo = new Thread(this);
@@ -37,9 +38,11 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 	
 	private void agregarPaneles() {
 		
-		Paneles paneles = new Paneles(curso);
+		paneles = new Paneles(curso);
 		this.getContentPane().add(paneles);
 	}
+	
+	
 
 	@Override
 	public void run() {
