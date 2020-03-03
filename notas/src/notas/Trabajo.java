@@ -18,7 +18,7 @@ public class Trabajo {
 	
 	
     /**
-     * Constructor que genera 
+     * Constructor que genera si un trabajo ha sido persentado o no y los días de retraso en caso de que sí
      */
     public Trabajo() {
         generarPresentado();
@@ -26,10 +26,10 @@ public class Trabajo {
     }
     
     /**
-     * Instantiates a new trabajo.
+     * Constructor al que se le pasa si un trabajo ha sido presentado y los días de retraso que recibe
      *
-     * @param isPresentado the is presentado
-     * @param diasRetraso the dias retraso
+     * @param isPresentado si el trabajo ha sido presentado
+     * @param diasRetraso indica los días de retraso
      */
     public Trabajo(boolean isPresentado, int diasRetraso) {
     	this.isPresentado = isPresentado;
@@ -37,7 +37,7 @@ public class Trabajo {
     }
     
     /**
-     * Generar presentado.
+     * Genera si ha sido presentado
      */
     public void generarPresentado () {
     	
@@ -47,7 +47,7 @@ public class Trabajo {
     
     
     /**
-     * Generar dias retraso.
+     * Genera los dias de retraso.
      */
     public void generarDiasRetraso() {
     	
@@ -58,9 +58,9 @@ public class Trabajo {
     }
     
     /**
-     * Trabajo aprobado.
+     * Genera si el trabajo está aprobado.
      *
-     * @return true, if successful
+     * @return si está suspendido o aprobado
      */
     public boolean trabajoAprobado () {
         
@@ -78,8 +78,8 @@ public class Trabajo {
     /**
      * Ha entregado todos los trabajos.
      *
-     * @param trabajos the trabajos
-     * @return true, if successful
+     * @param recibe un array de trabajos
+     * @return devuelve true si ha entregado todos los trabajos
      */
     static public boolean haEntregadoTodosLosTrabajos(Trabajo[] trabajos) {
     	
@@ -92,9 +92,9 @@ public class Trabajo {
     }
 
 	/**
-	 * Checks if is presentado.
+	 * Comprueba si un trabajo ha sido presentado.
 	 *
-	 * @return true, if is presentado
+	 * @return true si ha sido presentado
 	 */
 	public boolean isPresentado() {
 		return isPresentado;

@@ -1,8 +1,8 @@
 package notas;
 
+import interfaz.NotasClasicos;
 import interfaz.Pestanya;
 import interfaz.VentanaPrincipal;
-import interfaz.paneles.NotasClasicos;
 
 public class Principal {
 

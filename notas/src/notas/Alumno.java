@@ -7,9 +7,15 @@ package notas;
  * Clase que representarï¿½ un alumno del curso.
  *
  * @author David Quiles
+<<<<<<< HEAD
  * @author Alejandro Lï¿½pez
  * @version 1.0
  */
+=======
+ * @author Alejandro López
+ * @version 1.0
+*/
+>>>>>>> branch 'master' of https://github.com/KilosElBardo/Proyecto-Entornos-Desarrollo
 
 public class Alumno {
 	
