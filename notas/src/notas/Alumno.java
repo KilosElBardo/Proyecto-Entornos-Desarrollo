@@ -6,7 +6,7 @@ package notas;
  * Clase que representarï¿½ un alumno del curso
  * 
  * @author David Quiles
- * @author Alejandro Lï¿½pez
+ * @author Alejandro López
  * @version 1.0
 */
 
