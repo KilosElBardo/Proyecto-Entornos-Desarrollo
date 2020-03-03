@@ -1,3 +1,8 @@
+/*
+ * @version 1.0
+ * @author David Quiles
+ * @author Alejandro López
+ */
 package interfaz;
 
 import java.awt.event.ActionEvent;
@@ -14,14 +19,33 @@ import javax.swing.JToolBar;
 import notas.Alumno;
 import notas.Curso;
 
+// TODO: Auto-generated Javadoc
+/**
+ * Barra de herramientas situada arriba de la ventana
+ */
 public class BarraHerramientas extends JToolBar {
 
+	/** Agregar alumnos boton. */
 	private JButton agregarUsuarioBoton;
-	private JButton eliminarUsuarioBoton;
+	
+	/** exportar alumnos en fichero boton. */
 	private JButton guardarUsuariosEnFicheroBoton;
+	
+	/** Objeto de curso que recibirá por el constructor. */
 	private Curso curso;
 	
-	public BarraHerramientas(String message, Curso curso) {
+	/** Ventana de guardar fichero */
+	private JFileChooser fc;
+	
+	/** Fichero seleccionado. */
+	private File file;
+	
+	/**
+	 * Constructor cuya función es llamar al método que agrega los botones a la Barra de herramientas.
+	 *
+	 * @param curso Objeto de la clase Curso.
+	 */
+	public BarraHerramientas(Curso curso) {
 		
 		this.curso = curso;
 		agregarBotones();
@@ -29,18 +53,21 @@ public class BarraHerramientas extends JToolBar {
 		
 	}
 	
+	/**
+	 * Agrega botones a la Barra de herramientas.
+	 */
 	private void agregarBotones() {
 		agregarUsuarioBoton = new JButton("Agregar alumno");
-		eliminarUsuarioBoton = new JButton("Eliminar alumno");
 		guardarUsuariosEnFicheroBoton = new JButton("Exportar calificacion final");
 		add(agregarUsuarioBoton);
-		add(eliminarUsuarioBoton);
 		add(guardarUsuariosEnFicheroBoton);
 		eventoClickBotonAgregar();
-		eventoClickBotonEliminar();
 		eventoClickBotonGuardar();
 	}
 	
+	/**
+	 * Evento click boton agregar.
+	 */
 	private void eventoClickBotonAgregar() {
 		
 		agregarUsuarioBoton.addActionListener(new ActionListener() {
@@ -54,19 +81,9 @@ public class BarraHerramientas extends JToolBar {
 		});
 	}
 	
-	private void eventoClickBotonEliminar() {
-		
-		eliminarUsuarioBoton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Eliminar usuario");
-				
-			}
-			
-		});
-	}
-	
+	/**
+	 * Evento click boton guardar.
+	 */
 	private void eventoClickBotonGuardar() {
 		
 		guardarUsuariosEnFicheroBoton.addActionListener(new ActionListener() {
@@ -85,10 +102,9 @@ public class BarraHerramientas extends JToolBar {
 		});
 	}
 	
-	
-	JFileChooser fc;
-	File file;
-	
+	/**
+	 * Iniciar save file chooser.
+	 */
 	private void iniciarSaveFileChooser() {
 		fc = new JFileChooser();
 		fc.showSaveDialog(this);
@@ -98,6 +114,12 @@ public class BarraHerramientas extends JToolBar {
 		
 	}
 	
+	/**
+	 * Escribir datos en fichero.
+	 *
+	 * @param ruta La ruta donde guardaremos el fichero
+	 * @param alumnos El array de alumnos a guardar en el fichero
+	 */
 	private void escribirDatosEnFichero(String ruta, Alumno[] alumnos) {
 		
 		try {

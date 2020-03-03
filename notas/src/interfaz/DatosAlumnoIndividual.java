@@ -1,4 +1,9 @@
-package interfaz.paneles;
+/*
+ * @version 1.0
+ * @author David Quiles
+ * @author Alejandro López
+ */
+package interfaz;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,17 +18,32 @@ import javax.swing.JPanel;
 
 import notas.Alumno;
 
+/**
+ * Panel que mostrará los datos de un alumno en concreto.
+ */
 public class DatosAlumnoIndividual extends JPanel {
 	
+	/**  Label que mostrará la imagen de perfil. */
 	JLabel imagenPerfil = new JLabel("");
-	JLabel idEstudianteInfo = new JLabel("");
-	JLabel idEstudiante = new JLabel("");
-	JLabel nombreApellidos = new JLabel("");
-	JLabel edad = new JLabel();
-	JLabel sexo = new JLabel("");
-	GridBagConstraints gbc = new GridBagConstraints();
-
 	
+	/** Label que mostrará el Id estudiante. */
+	JLabel idEstudiante = new JLabel("");
+	
+	/** Label que mostrará los nombres y apellidos. */
+	JLabel nombreApellidos = new JLabel("");
+	
+	/** Label que mostrará la edad. */
+	JLabel edad = new JLabel();
+	
+	/** Label que mostrará el Id estudiante del alumno. */
+	JLabel sexo = new JLabel("");
+	
+	/** El gbc en el que se indicará el layout del panel. */
+	GridBagConstraints gbc = new GridBagConstraints();
+	
+	/**
+	 * Agregará todos los elementos gráficos del panel.
+	 */
 	public DatosAlumnoIndividual() {
 	
 	nombreApellidos.setFont(new Font("Times New Roman", Font.BOLD, 40) );
@@ -33,7 +53,6 @@ public class DatosAlumnoIndividual extends JPanel {
 		
     gbc.insets = new Insets(12,12,18,18);
 	setLayout(new GridBagLayout());
-	
 	
 	gbc.gridx = 0;
 	gbc.gridy = 0;
@@ -58,6 +77,11 @@ public class DatosAlumnoIndividual extends JPanel {
 		
 	}
 	
+	/**
+	 * Actualizará los elementos gráficos dependiendo del alumno que enviemos por parametro.
+	 *
+	 * @param alumno Alumno del que mostraremos los datos
+	 */
 	public void asignarTextoLabels(Alumno alumno) {
 		
 		imagenPerfil.setIcon(new ImageIcon(getClass().getResource(alumno.getImagen())));
@@ -71,9 +95,5 @@ public class DatosAlumnoIndividual extends JPanel {
 		sexo.setText("Sexo: " + String.valueOf(alumno.getSexo()));
 		
 	}
-	
-	
-	
-	
-	
+
 }

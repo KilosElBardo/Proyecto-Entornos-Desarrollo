@@ -1,3 +1,9 @@
+/*
+ * @version 1.0
+ * @author David Quiles
+ * @author Alejandro López
+ */
+
 package interfaz;
 
 import java.awt.BorderLayout;
@@ -22,22 +28,51 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
-import interfaz.paneles.DatosAlumnoIndividual;
 import notas.Curso;
 
+// TODO: Auto-generated Javadoc
+/*
+ * @version 1.0
+ * @author David Quiles
+ * @author Alejandro López
+ */
+
+/**
+ *  Class Pestanya.
+ */
 public class Pestanya extends JPanel {
 	
-	//Para evitar que al cambiar de pestaña se cambie al primer usuario
+	/**  Id usuario seleccionado, para que al cambiar entre pestañas se quede el alumno que estamos consultando  */
 	public static int idUsuarioSeleccionado = 1;
 	
+	/**  Tabla. */
 	protected JTable tabla;
+	
+	/**  Datos alumno individual. */
 	protected DatosAlumnoIndividual datosAlumnoIndividual;
+	
+	/**  ScrollPane de la tabla, así el usuario podrá hacer scroll en caso de muchos registros. */
 	public static JScrollPane scrollTabla;
+	
+	/**  Datos tabla. */
 	protected String[][] datosTabla;
+	
+	/**  Columnas tabla. */
 	protected String[] columnasTabla;
+	
+	/**  Oodel, nos permitirá agregar filas en caso de agregar datos a la tabla */
 	protected DefaultTableModel model;
+	
+	/**  Objeto de gestor pestanyas. */
 	protected GestorPestanyas gestorPestanyas;
 	
+	/**
+	 * Instantiates a new pestanya.
+	 *
+	 * @param datosTabla  datos que le enviaremos a la tabla
+	 * @param columnasTabla  columnas que le enviaremos tabla
+	 * @param gestorPestanyas gestor pestanyas
+	 */
 	public Pestanya(String[][] datosTabla, String[] columnasTabla, GestorPestanyas gestorPestanyas) {
 
 		setLayout(new BorderLayout());
@@ -46,23 +81,28 @@ public class Pestanya extends JPanel {
 		this.columnasTabla = columnasTabla;
 		this.gestorPestanyas = gestorPestanyas;
 		
-		actualizarTabla();
+		crearTabla();
 
 	
 	}
 	
+	/**
+	 * Mostrar informacion usuario seleccionado en el panel de la izquierda, para que el usuario pueda ver la foto, edad.
+	 */
 	protected void mostrarInformacionUsuarioSeleccionado() {
 		datosAlumnoIndividual.asignarTextoLabels(Curso.obtenerAlumnoPorID(idUsuarioSeleccionado));
 		tabla.changeSelection(idUsuarioSeleccionado-1, 0, false, false);
 	}
 	
-	public void actualizarTabla() {
+	/**
+	 * Actualizar tabla.
+	 */
+	public void crearTabla() {
 		
 		agregarTabla();
 		ajustarColumnaTablaAlContenido(tabla);
 		agregarMouseListenerTabla();
 		agregarDatosAlumnoPanel();
-		agregarBuscador();
 		mostrarInformacionUsuarioSeleccionado();
 		
 		gestorPestanyas.addChangeListener(new ChangeListener() {
@@ -77,6 +117,9 @@ public class Pestanya extends JPanel {
 		});
 	}
 	
+	/**
+	 * Nos instanciará el modelo y la tabla, le agregará los datos al modelo.
+	 */
 	protected void agregarTabla() {
 		
 		model = new DefaultTableModel();
@@ -89,22 +132,16 @@ public class Pestanya extends JPanel {
 			model.addRow(datosTabla[i]);
 		}
 		scrollTabla = new JScrollPane(tabla);
-		model.addTableModelListener(new TableModelListener() {
-			
-			@Override
-			public void tableChanged(TableModelEvent e) {
-				// TODO Auto-generated method stub
-				tabla.updateUI();
-				
 
-			}
-		});
 		add(scrollTabla, BorderLayout.EAST);
 	
 	}
 	
 	
 	
+	/**
+	 * Tabla cuya finalidad será la de al seleccionar cualquier fila de la tabla nos cree un evento para actualizar el panel de Datos Alumno Individual.
+	 */
 	protected void agregarMouseListenerTabla() {
 		tabla.addMouseListener(new MouseListener() {
 
@@ -144,6 +181,9 @@ public class Pestanya extends JPanel {
 		});
 	}
 
+	/**
+	 * Agregar panel de datos alumno individual, donde mostrará a la izquierda de la ventana datos propios del alumno seleccionado en la tabla.
+	 */
 	protected void agregarDatosAlumnoPanel() {
 		datosAlumnoIndividual = new DatosAlumnoIndividual();
 		//Padding del panel
@@ -151,10 +191,11 @@ public class Pestanya extends JPanel {
 		add(datosAlumnoIndividual, BorderLayout.CENTER);
 	}
 	
-	protected void agregarBuscador() {
-		
-	}
-	
+	/**
+	 * Ajustar columna tabla al contenido, para evitar columnas muy pequeñas, ya que java no permite cambiar el tamaño horizontal de las columnas por defecto
+	 *
+	 * @param table Tabla a las que ajustaremos las columnas
+	 */
 	public void ajustarColumnaTablaAlContenido(JTable table) {
 		
 	    final TableColumnModel modeloColumna = table.getColumnModel();

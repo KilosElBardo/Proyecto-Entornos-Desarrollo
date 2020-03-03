@@ -1,23 +1,42 @@
+/*
+ * @version 1.0
+ * @author David Quiles
+ * @author Alejandro López
+ */
 package interfaz;
 
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import interfaz.paneles.NotasClasicos;
-import interfaz.paneles.NotasFinales;
-import interfaz.paneles.NotasTests;
-import interfaz.paneles.Trabajos;
 import notas.Curso;
 
+// TODO: Auto-generated Javadoc
+/**
+ * Gestionará las pestañas de la ventana principal
+ */
 public class GestorPestanyas extends JTabbedPane {
 	
+	/** The curso. */
 	private Curso curso;
+	
+	/** Array de Strings con la información a incluir en la tabla de notas clasicos. */
 	private NotasClasicos notasClasicos;
+	
+	/** Array de Strings con la información a incluir en la tabla de notas tests.  */
 	private NotasTests notasTests;
+	
+	/** Array de Strings con la información a incluir en la tabla de trabajos. */
 	private Trabajos trabajos;
+	
+	/** Array de Strings con la información a incluir en la tabla de notas finales. */
 	private NotasFinales notasFinales;
 	
+	/**
+	 * Crea los paneles y los agrega al JTabbedPane.
+	 *
+	 * @param curso Objeto de la clase Curso
+	 */
 	public GestorPestanyas(Curso curso) {
 	
 		this.curso = curso;

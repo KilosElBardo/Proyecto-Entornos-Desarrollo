@@ -8,7 +8,6 @@ package notas;
  * @author David Quiles
  * @author Alejandro L�pez
  * @version 1.0
- * @see https://github.com/KilosElBardo/Proyecto-Entornos-Desarrollo.git
 */
 
 public class Alumno {
