@@ -12,10 +12,12 @@ import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -43,7 +45,7 @@ import notas.Trabajo;
  * 
  * @version 1.0
  * @author David Quiles
- * @author Alejandro López
+ * @author Alejandro Lï¿½pez
  */
 public class NuevoAlumno extends JFrame {
 	
@@ -60,7 +62,7 @@ public class NuevoAlumno extends JFrame {
 	JPanel datosPersonalesPanel = new JPanel();
 	
 	/** examenes clasicos titulo. */
-	JLabel examenesClasicosTitulo = new JLabel("Examenes clásicos");
+	JLabel examenesClasicosTitulo = new JLabel("Examenes clï¿½sicos");
 	
 	/** examenes tests titulo. */
 	JLabel examenesTestsTitulo = new JLabel("Examenes tests");
@@ -171,9 +173,9 @@ public class NuevoAlumno extends JFrame {
 	private Curso curso;
 	
 	/**
-	 * Se encarga de crear la ventana, agregar la interfaz del formulario y agregar el evento de click al botón de ingresar alumno.
+	 * Se encarga de crear la ventana, agregar la interfaz del formulario y agregar el evento de click al botï¿½n de ingresar alumno.
 	 *
-	 * @param curso Recibe el curso previamente creado para utilizar algunos de sus métodos como por ejemplo <b>agregarAlumnoACurso (Alumno alumno)</b>
+	 * @param curso Recibe el curso previamente creado para utilizar algunos de sus mï¿½todos como por ejemplo <b>agregarAlumnoACurso (Alumno alumno)</b>
 	 */
 	public NuevoAlumno(Curso curso) {
 		
@@ -183,6 +185,7 @@ public class NuevoAlumno extends JFrame {
 		agregarInterfazExamenesClasicos();
 		agregarInterfazTrabajos();
 		agregarInterfazExamenesTests();
+		establecerIconoVentana();
 		propiedadesVentana();
 		
 		ingresarNuevoAlumnoBoton.addActionListener(new ActionListener() {
@@ -198,7 +201,7 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Agrega la interfaz gráfica para que el usuario escriba los datos personales del nuevo alumno cómo el <b>nombre</b>, <b>apellidos</b>, <b>edad</b>.
+	 * Agrega la interfaz grï¿½fica para que el usuario escriba los datos personales del nuevo alumno cï¿½mo el <b>nombre</b>, <b>apellidos</b>, <b>edad</b>.
 	 */
 	private void agregarInterfazDatosPersonales() {
 		
@@ -227,7 +230,7 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Agrega la interfaz gráfica para que el usuario introduzca los datos de los examenes de tipo test.
+	 * Agrega la interfaz grï¿½fica para que el usuario introduzca los datos de los examenes de tipo test.
 	 */
 	private void agregarInterfazExamenesTests() {
 		
@@ -260,13 +263,13 @@ public class NuevoAlumno extends JFrame {
 		agregarElementoAlPanel(fallosTest2, examenesTestsPanel, gridBagTests, new Point(1,7));
 		agregarElementoAlPanel(new JLabel("Sin contestar"), examenesTestsPanel, gridBagTests, new Point(0,8));
 		agregarElementoAlPanel(noContestadasTest2, examenesTestsPanel, gridBagTests, new Point(1,8));
-		agregarElementoAlPanel(new JLabel("Recuerda la suma de aciertos más fallos más sin contestar debe ser " + 50), examenesTestsPanel, gridBagTests, new Point(0,9));
+		agregarElementoAlPanel(new JLabel("Recuerda la suma de aciertos mï¿½s fallos mï¿½s sin contestar debe ser " + 50), examenesTestsPanel, gridBagTests, new Point(0,9));
 		
 		add(examenesTestsPanel, BorderLayout.CENTER);
 	}
 	
 	/**
-	 * Agrega la interfaz gráfica para que el usuario introduzca los datos de los examenes de tipo clásico.
+	 * Agrega la interfaz grï¿½fica para que el usuario introduzca los datos de los examenes de tipo clï¿½sico.
 	 */
 	private void agregarInterfazExamenesClasicos() {
 		
@@ -288,7 +291,7 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Agrega la interfaz gráfica para que el usuario introduzca los datos de los trabajos.
+	 * Agrega la interfaz grï¿½fica para que el usuario introduzca los datos de los trabajos.
 	 */
 	private void agregarInterfazTrabajos() {
 		
@@ -300,28 +303,28 @@ public class NuevoAlumno extends JFrame {
 		//Agregamos el titulo
 		agregarElementoAlPanel(trabajosTitulo, trabajosPanel, gridBagTrabajos, new Point(0,0));
 		
-		//Agregamos el primer label junto con un checkbox de trabajos y un JSpinner para indicar los días de retraso
+		//Agregamos el primer label junto con un checkbox de trabajos y un JSpinner para indicar los dï¿½as de retraso
 		agregarElementoAlPanel(new JLabel("Primer trabajo"), trabajosPanel, gridBagTrabajos, new Point(0,1));
 		agregarElementoAlPanel(trabajosCheckBox1, trabajosPanel, gridBagTrabajos, new Point(1,1));
 		agregarElementoAlPanel(diasRetrasoSpinner1, trabajosPanel, gridBagTrabajos, new Point(2,1));
-		agregarElementoAlPanel(new JLabel("días de retraso"), trabajosPanel, gridBagTrabajos, new Point(3,1));
+		agregarElementoAlPanel(new JLabel("dï¿½as de retraso"), trabajosPanel, gridBagTrabajos, new Point(3,1));
 		
 		agregarElementoAlPanel(new JLabel("Segundo trabajo"), trabajosPanel, gridBagTrabajos, new Point(0,2));
 		agregarElementoAlPanel(trabajosCheckBox2, trabajosPanel, gridBagTrabajos, new Point(1,2));
 		agregarElementoAlPanel(diasRetrasoSpinner2, trabajosPanel, gridBagTrabajos, new Point(2,2));
-		agregarElementoAlPanel(new JLabel("días de retraso"), trabajosPanel, gridBagTrabajos, new Point(3,2));
+		agregarElementoAlPanel(new JLabel("dï¿½as de retraso"), trabajosPanel, gridBagTrabajos, new Point(3,2));
 	
 		agregarElementoAlPanel(new JLabel("Segundo trabajo"), trabajosPanel, gridBagTrabajos, new Point(0,3));
 		agregarElementoAlPanel(trabajosCheckBox3, trabajosPanel, gridBagTrabajos, new Point(1,3));
 		agregarElementoAlPanel(diasRetrasoSpinner3, trabajosPanel, gridBagTrabajos, new Point(2,3));
-		agregarElementoAlPanel(new JLabel("días de retraso"), trabajosPanel, gridBagTrabajos, new Point(3,3));
+		agregarElementoAlPanel(new JLabel("dï¿½as de retraso"), trabajosPanel, gridBagTrabajos, new Point(3,3));
 		
 		add(trabajosPanel, BorderLayout.WEST);
 		
 	}
 	
 	/**
-	 * Agregará un alumno al curso y nos lo incluirá en las tablas.
+	 * Agregarï¿½ un alumno al curso y nos lo incluirï¿½ en las tablas.
 	 */
 	private void agregarAlumno() {
 		
@@ -333,7 +336,7 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Agregará el alumno nuevo creado a la tabla de notas clásicas, tests y trabajos.
+	 * Agregarï¿½ el alumno nuevo creado a la tabla de notas clï¿½sicas, tests y trabajos.
 	 */
 	private void agregarAlumnoATabla() {
 		String[] informacionClasicos = curso.generarInformacionExamenesClasicos(Curso.alumnosRegistrados-1);
@@ -348,9 +351,9 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Recogerá los examenes de tipo clásico del formulario y nos devolverá un array.
+	 * Recogerï¿½ los examenes de tipo clï¿½sico del formulario y nos devolverï¿½ un array.
 	 *
-	 * @return Devuelve un array con los exámenes de tipo clásico para el nuevo usuario
+	 * @return Devuelve un array con los exï¿½menes de tipo clï¿½sico para el nuevo usuario
 	 */
 	private ExamenClasico[] recogerExamenesClasicos() {
 		
@@ -364,9 +367,9 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Recogerá los examenes de tipo test del formulario y nos devolverá un array.
+	 * Recogerï¿½ los examenes de tipo test del formulario y nos devolverï¿½ un array.
 	 *
-	 * @return Devuelve un array con los exámenes de tipo test para el nuevo usuario
+	 * @return Devuelve un array con los exï¿½menes de tipo test para el nuevo usuario
 	 */
 	private ExamenTest[] recogerExamenesTest() {
 		
@@ -378,7 +381,7 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Recogerá los trabajos del formulario y nos devolverá un array.
+	 * Recogerï¿½ los trabajos del formulario y nos devolverï¿½ un array.
 	 *
 	 * @return Devuelve array con los trabajoss para el nuevo usuario
 	 */
@@ -393,10 +396,10 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Permite cambiar el tamaño de la fuente de un componente gráfico.
+	 * Permite cambiar el tamaï¿½o de la fuente de un componente grï¿½fico.
 	 *
 	 * @param component Componente al que afectaremos
-	 * @param tamanyo Nuevo tamaño de la fuente
+	 * @param tamanyo Nuevo tamaï¿½o de la fuente
 	 */
 	private void cambiarTamanyoFuente(JComponent component, int tamanyo) {
 		
@@ -404,9 +407,9 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Establecerá las propiedades que tendrá por defecto cada panel creado en esta ventana.
+	 * Establecerï¿½ las propiedades que tendrï¿½ por defecto cada panel creado en esta ventana.
 	 *
-	 * @param panel Panel al que afectará
+	 * @param panel Panel al que afectarï¿½
 	 */
 	private void propiedadesDefectoPaneles(JPanel panel) {
 		panel.setLayout(new GridBagLayout());
@@ -431,13 +434,13 @@ public class NuevoAlumno extends JFrame {
 	}
 	
 	/**
-	 * Permite agregar espaciado entre los componentes de la interfaz gráfica.
+	 * Permite agregar espaciado entre los componentes de la interfaz grï¿½fica.
 	 *
 	 * @param arriba Espacio arriba
 	 * @param derecha Espacio derecha
 	 * @param abajo Espacio abajo
 	 * @param izquierda Espacio izquierda
-	 * @param gbc GridBagConstraints al que agregará el espacio
+	 * @param gbc GridBagConstraints al que agregarï¿½ el espacio
 	 */
 	private void agregarEspaciadoGridBagLayout(int arriba, int derecha, int abajo, int izquierda, GridBagConstraints gbc) {
 		gbc.insets = new Insets( arriba, derecha, abajo, izquierda);
@@ -450,7 +453,17 @@ public class NuevoAlumno extends JFrame {
 		setSize(new Dimension(1100, 900));
 		setLocationRelativeTo(null);
 		setResizable(true);
+		setTitle("Agregar alumno | Student Mark");
 		setVisible(true);
+	}
+	
+	/**
+	 * Establecer icono ventana.
+	 */
+	private void establecerIconoVentana() {
+		URL urlIcono = getClass().getResource("/resources/highschool.png");
+		ImageIcon icon = new ImageIcon(urlIcono);
+		setIconImage(icon.getImage());
 	}
 	
 }

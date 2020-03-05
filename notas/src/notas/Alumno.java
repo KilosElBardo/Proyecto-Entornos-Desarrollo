@@ -11,12 +11,17 @@ package notas;
  * @author Alejandro L�pez
  * @version 1.0
  */
-=======
- * @author Alejandro L�pez
+/**
+ * @author Alejandro Lopez
+ * @author David Quiles
  * @version 1.0
-*/
->>>>>>> branch 'master' of https://github.com/KilosElBardo/Proyecto-Entornos-Desarrollo
+ */
 
+/**
+ * 
+ * Almacenará toda la información del alumno tanto datos personales como datos academicos
+ *
+ */
 public class Alumno {
 	
 	/** EXAMENES_CLASICOS Indica la cantidad m�xima de examenes de tipo cl�sico que un alumno har� por curso. */

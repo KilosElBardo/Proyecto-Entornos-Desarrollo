@@ -3,7 +3,7 @@
  * Crear ventana principal
  * @version 1.0
  * @author David Quiles
- * @author Alejandro López
+ * @author Alejandro Lï¿½pez
  */
 
 package interfaz;
@@ -34,7 +34,7 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 	private Paneles paneles;
 	
 	/**
-	 * Creará el hilo y llamará al método Run.
+	 * Crearï¿½ el hilo y llamarï¿½ al mï¿½todo Run.
 	 */
 	public VentanaPrincipal() {
 		hilo = new Thread(this);
@@ -50,6 +50,7 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(true);
+		setTitle("Software de gestiÃ³n de alumnos | Student Mark");
 		setVisible(true);
 	}
 	
@@ -83,8 +84,6 @@ public class VentanaPrincipal extends JFrame implements Runnable {
 		generarCurso();
 		agregarPaneles();
 		propiedadesVentana();
-		
-		
 		
 	}
 	

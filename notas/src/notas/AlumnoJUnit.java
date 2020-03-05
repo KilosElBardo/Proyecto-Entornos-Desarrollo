@@ -11,12 +11,31 @@ import org.junit.jupiter.api.Test;
 class AlumnoJUnit {
 
 	static Alumno alumno;
+	static ExamenClasico[] examenesClasicos = new ExamenClasico[3];
+	static ExamenTest[] examenesTest = new ExamenTest[2];
+	static Trabajo[] trabajos = new Trabajo[3];
+	
+	private static final double PORCENTAJE_PRIMER_EXAMEN_CLASICO = 10 / 100f;
+    private static final double PORCENTAJE_SEGUNDO_EXAMEN_CLASICO = 20 /100f;
+    private static final double PORCENTAJE_TERCER_EXAMEN_CLASICO = 20 / 100f;
+    private static final double PORCENTAJE_PRIMER_EXAMEN_TEST = 25 / 100f;
+    private static final double PORCENTAJE_SEGUNDO_EXAMEN_TEST = 25 / 100f;
+    
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		
-		alumno = new Alumno();
-		
+		examenesClasicos[0] = new ExamenClasico(6);
+		examenesClasicos[1] = new ExamenClasico(8);
+		examenesClasicos[2] = new ExamenClasico(6);
+		examenesTest[0] = new ExamenTest(25,0, 25);
+		examenesTest[1] = new ExamenTest(50,0, 0);
+		trabajos[0] = new Trabajo(true, 3);
+		trabajos[1] = new Trabajo(true, 6);
+		trabajos[2] = new Trabajo(false, 0);
+		alumno = new Alumno("David", "Quiles", 23, false, examenesTest, examenesClasicos, trabajos);
+	
 	}
+
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
@@ -31,28 +50,19 @@ class AlumnoJUnit {
 	}
 
 	@Test
-	void test() {
-		System.out.println(alumno.getNombre());
-		System.out.println(alumno.getApellidos());
-		System.out.println("Id del estudiante " + alumno.getIdEstudiante());
-		System.out.println("Edad " + alumno.getEdad());
-		System.out.println("Sexo " + alumno.getSexo());
-		System.out.println("Imagen perfil " + alumno.getImagen());
+	void testNotaFinal() {
 		
-		System.out.println("Examenes tests");
-		for (int i = 0; i < 2; i++) {
-			System.out.println("        " + alumno.getExamenesTests()[i]);
-		}
+		double notaPrimerExamen, notaSegundoExamen, notaTercerExamen, notaCuartoExamen, notaQuintoExamen, notaFinal;   
 		
-		System.out.println("Trabajos");
-		for (int i = 0; i < 3; i++) {
-			System.out.println("        " + alumno.getTrabajos()[i]);
-		}
+		notaPrimerExamen = alumno.getExamenesClasicos()[0].getNota() * PORCENTAJE_PRIMER_EXAMEN_CLASICO;
+    	notaSegundoExamen = alumno.getExamenesClasicos()[1].getNota() * PORCENTAJE_SEGUNDO_EXAMEN_CLASICO;
+    	notaTercerExamen = alumno.getExamenesClasicos()[2].getNota() * PORCENTAJE_TERCER_EXAMEN_CLASICO;
+    	notaCuartoExamen = alumno.getExamenesTests()[0].getNota() * PORCENTAJE_PRIMER_EXAMEN_TEST;
+    	notaQuintoExamen = alumno.getExamenesTests()[1].getNota() * PORCENTAJE_SEGUNDO_EXAMEN_TEST;
+    	
+    	notaFinal = Math.round(notaPrimerExamen + notaSegundoExamen + notaTercerExamen + notaCuartoExamen + notaQuintoExamen);
 		
-		System.out.println("Examenes clásicos");
-		for (int i = 0; i < 3; i++) {
-			System.out.println("        " + alumno.getExamenesClasicos()[i].getNota());
-		}
+    	assertEquals(notaFinal, 7);
 		
 	}
 }

@@ -1,5 +1,10 @@
+/**
+ * @author Alejandro Lopez
+ * @author David Quiles
+ * @version 1.0
+ */
+
 package notas;
-// TODO: Auto-generated Javadoc
 
 /**
  * The Class ExamenClasico.

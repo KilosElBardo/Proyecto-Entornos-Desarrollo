@@ -7,7 +7,7 @@ import interfaz.GestorPestanyas;
  * <p>Almacenar� en un array de <b>Alumnos</b> todos los alumnos pertenecientes al curso</p>
  * 
  * @author David Quiles
- * @author Alejandro L�pez
+ * @author Alejandro Lopez
  * @version 1.0
  *
  */
