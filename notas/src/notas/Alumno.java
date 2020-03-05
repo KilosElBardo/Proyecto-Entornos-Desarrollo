@@ -1,16 +1,6 @@
 
 package notas;
 
-// TODO: Auto-generated Javadoc
-/**
- * <h2> Alumno </h2>
- * Clase que representar� un alumno del curso.
- *
- * @author David Quiles
-<<<<<<< HEAD
- * @author Alejandro L�pez
- * @version 1.0
- */
 /**
  * @author Alejandro Lopez
  * @author David Quiles
